@@ -36,6 +36,7 @@ function ButtonContained(props: ButtonProps): React.ReactElement {
           ? '1px solid rgba(113, 92, 87, .4)'
           : '1px solid #4e342e',
         color: disabled ? 'rgba(113, 92, 87, .4)' : '#4e342e',
+        backgroundColor: 'transparent',
         transition: 'border .2s ease',
         '&:hover': {
           border: '1px solid #362420',
@@ -46,6 +47,7 @@ function ButtonContained(props: ButtonProps): React.ReactElement {
       return css({
         border: 'none',
         color: disabled ? 'rgba(113, 92, 87, .4)' : '#4e342e',
+        backgroundColor: 'transparent',
         transition: 'color .2s ease',
         '&:hover': {
           color: '#362420',
