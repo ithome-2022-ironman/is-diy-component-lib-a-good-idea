@@ -5,6 +5,7 @@ export default function useScrollPercentage(): number {
   const [percentage, setPercentage] = useState<number>(0);
 
   /* Functions */
+  // TODO: lodash
   const calculatePercentage = (): void => {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;

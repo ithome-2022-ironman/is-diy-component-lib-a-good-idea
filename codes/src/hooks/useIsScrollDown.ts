@@ -6,6 +6,7 @@ export default function useIsScrollDown(): boolean {
   const [isDown, setIsDown] = useState<boolean>(false);
 
   /* Functions */
+  // TODO: lodash
   const handleScrollDirection = (oldScrollTop: number) => () => {
     const newScrollTop = window.scrollY || document.documentElement.scrollTop;
     if (newScrollTop > oldScrollTop) {
