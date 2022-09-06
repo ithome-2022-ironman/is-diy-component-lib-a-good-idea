@@ -2,15 +2,14 @@ import React, { memo, useMemo } from 'react';
 import { css } from '@emotion/css';
 import cn from 'classnames';
 import useScrollPercentage from '@Hooks/useScrollPercentage';
-import type { ProgressProps } from './types';
+import type { ProgressBarProps } from './types';
 
-function Progress(props: ProgressProps): React.ReactElement {
+function ProgressBar(props: ProgressBarProps): React.ReactElement {
   /* States */
   const { height = 4, bg = 'linear-gradient(to right, #78909c, #4e342e)' } =
     props;
-  const percentage = useScrollPercentage();
-
   const finalHeight = useMemo(() => (height ? Math.ceil(height) : 4), [height]);
+  const percentage = useScrollPercentage();
 
   /* Main */
   return (
@@ -30,4 +29,4 @@ function Progress(props: ProgressProps): React.ReactElement {
   );
 }
 
-export default memo(Progress);
+export default memo(ProgressBar);

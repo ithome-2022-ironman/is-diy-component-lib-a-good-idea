@@ -1,6 +1,6 @@
 import type { Property } from 'csstype';
 
-export interface ProgressProps {
+export interface ProgressBarProps {
   height?: number;
   bg?: (string | (string & {}))[] | Property.Background<string | number>;
 }
