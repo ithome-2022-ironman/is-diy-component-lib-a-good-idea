@@ -1,4 +1,4 @@
-# day04: ScrollPercentageBar
+# day04: ProgressBar
 
 回收再利用昨天做好的 useScrollPercentage 來寫一個根據畫面捲動百分比延展的進度條。
 
