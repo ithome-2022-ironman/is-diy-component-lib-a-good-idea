@@ -7,7 +7,7 @@ function Stack(props: StackProps): React.ReactElement {
   /* States */
   const {
     children,
-    gap = 16,
+    gap = '16px',
     direction = 'column',
     className,
     ...rest
@@ -19,7 +19,7 @@ function Stack(props: StackProps): React.ReactElement {
       className={cn(
         css({
           display: 'flex',
-          gap: `${gap}px`,
+          gap,
           flexDirection: direction,
           flexWrap: 'wrap',
         }),
