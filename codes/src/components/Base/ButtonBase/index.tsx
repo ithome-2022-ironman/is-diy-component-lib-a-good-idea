@@ -72,7 +72,7 @@ function ButtonBase(props: ButtonProps): React.ReactElement {
         rippleContainer.appendChild(rippleEffect);
       }
     },
-    [disableRipple, rippleContainerRef]
+    [disableRipple, rippleContainerRef, rippleStyle]
   );
   const removeRipple = useCallback((): void => {
     const rippleContainer = rippleContainerRef.current;
@@ -86,7 +86,7 @@ function ButtonBase(props: ButtonProps): React.ReactElement {
         }
       });
     }
-  }, [rippleContainerRef]);
+  }, [rippleContainerRef, rippleStyle]);
 
   /* Hooks */
   useEffect(() => {
