@@ -1,7 +1,5 @@
-import React from 'react';
+import type { ButtonBaseProps } from '@Components/Base/ButtonBase/types';
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-  disableRipple?: boolean;
+export interface ButtonProps extends ButtonBaseProps {
+  variant?: 'contained' | 'outlined' | 'text';
 }
