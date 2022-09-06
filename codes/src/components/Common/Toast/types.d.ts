@@ -1,16 +1,16 @@
 import React from 'react';
 
-export interface SnackProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
   show: boolean;
   children?: React.ReactNode;
   countDown?: number;
   disableAutoClose?: boolean;
   pauseOnHover?: boolean;
-  classes?: Partial<SnackClasses>;
+  classes?: Partial<ToastClasses>;
   onClose?: () => void;
 }
 
-interface SnackClasses {
+interface ToastClasses {
   snack: string;
   closeButton: string;
 }

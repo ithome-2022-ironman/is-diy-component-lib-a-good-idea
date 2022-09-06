@@ -2,7 +2,7 @@ import React, { memo, useMemo, createRef, useCallback, useEffect } from 'react';
 import { css, keyframes } from '@emotion/css';
 import cn from 'classnames';
 import Portal from '@Components/Layer/Portal';
-import type { SnackProps } from './types';
+import type { ToastProps } from './types';
 
 const countDownAnimation = keyframes`
 from {
@@ -13,7 +13,7 @@ to {
 }
 `;
 
-function Snack(props: SnackProps): React.ReactElement {
+function Toast(props: ToastProps): React.ReactElement {
   /* States */
   const {
     show,
@@ -114,4 +114,4 @@ function Snack(props: SnackProps): React.ReactElement {
   );
 }
 
-export default memo(Snack);
+export default memo(Toast);
