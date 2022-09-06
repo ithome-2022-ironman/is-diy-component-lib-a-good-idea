@@ -5,16 +5,14 @@
 ## 開發思路
 
 先觀察一下：
-- Elevate App bar 的行為：畫面的 `Element.scrollTop !== 0` 時，為導覽列加上陰影效果。
+- Elevate App bar 的行為：畫面的不在頂部時，為導覽列加上陰影效果。
 - Hide App bar 的行為：畫面往下捲動時，收起導覽列；畫面往上捲動時，導覽列滑出。
 
-想讓元件本身的 code 單純好讀，也考慮到之後可能也會有其他元件用到捲動相關資料，故選擇把以上兩個邏輯判定包成 custom hooks useScrollPercentage 與 useScrollDown 來處理，不直接將捲動相關的邏輯寫在元件內。
-
-~~劇透：但後面有實作出來的元件沒有一個用到這兩支 hooks (ﾟ∀。)~~
+想讓元件本身的 code 單純好讀，也考慮到之後可能也會有其他元件用到捲動相關資料，故選擇把以上兩個邏輯判定包成 custom hooks `useScrollPercentage` 與 `useScrollDown` 來處理，不直接將捲動相關的邏輯寫在元件內。
 
 能取得「畫面捲動百分比」與「捲動方向」的資料後，這兩個元件分別要處理的內容只剩下：
 - Elevate App bar：根據捲動百分比，來控制元件是否加上 `filter: drop-shadow(...)` 樣式。
-- Hide App bar：預設導覽列 `transform` 樣式為 `translateY(0px)`，在 `useScrollDown` 回傳 `false` 時，設定 `transform` 為 `translateY(-60px)` 將導元件往上方推移。
+- Hide App bar：預設導覽列 `transform` 樣式為 `translateY(0px)`，在 `useScrollDown` 回傳 `true` 時，設定 `transform` 為 `translateY(-60px)` 將導元件往上方推移。
 
 ## 修改指南
 
@@ -22,7 +20,7 @@ TODO: day03 修改指南
 
 ## 自評
 
-- 取代性：高，有現成的。
+- 被取代性：高，有現成的。
 - 開發難度：中低，邏輯並不複雜。
 
 還可以，至少沒有花很多時間從頭開始造輪子。
