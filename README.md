@@ -7,7 +7,7 @@
 1. 前言：為什麼不用人家寫好的東西？
 2. Container
 3. NavBar
-4. ScrollPercentageBar
+4. ProgressBar
 5. SpaceWrapper
 6. Stack
 7. Divider
