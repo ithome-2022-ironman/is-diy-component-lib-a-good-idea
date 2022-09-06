@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { debounce } from 'lodash';
+import type { ScrollArgs } from './generalTypes';
 
-export default function useScrollPercentage(): number {
+export default function useScrollPercentage(args: ScrollArgs = {}): number {
   /* States */
+  const { delay = 100 } = args;
   const [percentage, setPercentage] = useState<number>(0);
 
   /* Functions */
-  // TODO: lodash
-  const calculatePercentage = (): void => {
+  const calculatePercentage = useCallback((): void => {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     const scrollHeight =
@@ -14,13 +16,14 @@ export default function useScrollPercentage(): number {
     const { clientHeight } = document.documentElement;
     const percent = (scrollTop / (scrollHeight - clientHeight)) * 100;
     setPercentage(Math.round(percent));
-  };
+  }, []);
+  const debouncedCalcPercentage = debounce(calculatePercentage, delay);
 
   /* Hooks */
   useEffect(() => {
-    window.addEventListener('scroll', calculatePercentage);
-    return () => window.removeEventListener('scroll', calculatePercentage);
-  }, []);
+    window.addEventListener('scroll', debouncedCalcPercentage);
+    return () => window.removeEventListener('scroll', debouncedCalcPercentage);
+  }, [debouncedCalcPercentage]);
 
   /* Main */
   return percentage;
