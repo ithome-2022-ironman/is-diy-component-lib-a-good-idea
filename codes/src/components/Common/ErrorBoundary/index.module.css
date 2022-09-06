@@ -1,0 +1,19 @@
+.errorBoundaryTitle {
+  display: block;
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 0.33em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+.errorBoundaryMessage {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0;
+}
