@@ -1,13 +1,13 @@
 import React, { ReactHTML } from 'react';
 
-interface Classes {
+interface ContainerClasses {
   wrapper: string;
   child: string;
 }
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  classes?: Partial<Classes>;
+  classes?: Partial<ContainerClasses>;
   renderAs?: keyof ReactHTML;
   disablePadding?: boolean;
 }
