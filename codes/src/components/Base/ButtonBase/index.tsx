@@ -1,7 +1,7 @@
 import React, { memo, createRef, useMemo, useCallback, useEffect } from 'react';
 import { css, keyframes } from '@emotion/css';
 import cn from 'classnames';
-import type { ButtonProps } from './types';
+import type { ButtonBaseProps } from './types';
 
 const rippleAnimation = keyframes`
 to {
@@ -28,7 +28,7 @@ const rippleContainer = css({
   pointerEvents: 'none',
 });
 
-function ButtonBase(props: ButtonProps): React.ReactElement {
+function ButtonBase(props: ButtonBaseProps): React.ReactElement {
   /* States */
   const {
     children,
