@@ -4,18 +4,18 @@ import Button from '@Components/Common/Button';
 
 function Day10(): React.ReactElement {
   return (
-    <React.Fragment>
+    <Stack>
       <Stack direction="row">
         <Button>contained</Button>
         <Button disabled>contained</Button>
       </Stack>
-      <Stack>
+      <Stack direction="row">
         <Button variant="outlined">outlined</Button>
         <Button variant="outlined" disabled>
           outlined
         </Button>
       </Stack>
-      <Stack>
+      <Stack direction="row">
         <Button variant="text" rippleColor="rgba(214, 51, 132, .4)">
           text
         </Button>
@@ -23,7 +23,7 @@ function Day10(): React.ReactElement {
           text
         </Button>
       </Stack>
-    </React.Fragment>
+    </Stack>
   );
 }
 
