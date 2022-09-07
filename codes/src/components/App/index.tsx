@@ -9,6 +9,7 @@ import Day03 from '@Components/Page/day03';
 import Day09 from '@Components/Page/day09';
 import Day10 from '@Components/Page/day10';
 import Day11 from '@Components/Page/day11';
+import Tabs from '@Components/Page/Tabs';
 
 const appContainer = css({
   height: '100%',
@@ -31,6 +32,7 @@ function Routes(): React.ReactElement {
             <Link to="/day09">9: ButtonBase</Link>
             <Link to="/day10">10: Button</Link>
             <Link to="/day11">11: UploadButton</Link>
+            <Link to="/Tabs">Tabs</Link>
           </Stack>
         </div>
         <div className={cn(main)}>
@@ -52,6 +54,9 @@ function Routes(): React.ReactElement {
             </Route>
             <Route path="/day11">
               <Day11 />
+            </Route>
+            <Route path="/Tabs">
+              <Tabs />
             </Route>
           </Switch>
         </div>
