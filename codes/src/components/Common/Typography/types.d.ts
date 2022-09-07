@@ -1,4 +1,4 @@
-import React, { ReactHTML, ReactText } from 'react';
+import React, { ReactHTML } from 'react';
 
 export interface TypographyProps
   extends React.HTMLAttributes<HTMLHeadingElement>,

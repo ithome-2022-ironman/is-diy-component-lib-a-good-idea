@@ -36,6 +36,8 @@ function Typography(props: TypographyProps): React.ReactElement {
     }
     if (renderAs === 'p') {
       return css({
+        display: 'flex',
+        alignItems: 'center',
         paddingRight: '1rem',
       });
     }
