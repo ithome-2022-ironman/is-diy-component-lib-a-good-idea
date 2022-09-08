@@ -1,43 +1,73 @@
-import React, { memo, useState, useCallback } from 'react';
-import { css } from '@emotion/css';
+import React, { memo, useState, useCallback, useEffect, useMemo } from 'react';
 import cn from 'classnames';
-import { ExpendLessIcon } from '@Assets/icons';
 import type { AccordionProps } from './types';
-
-const title = css({
-  minHeight: '48px',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  padding: '16px',
-});
-const iconStyle = css({
-  transform: 'rotate(0deg)',
-});
-const transformIcon = css({
-  transform: 'rotate(180deg)',
-  transition: 'transform .2s ease',
-});
 
 function Accordion(props: AccordionProps): React.ReactElement {
   /* States */
-  const { classes = { wrapper: '', title: '', body: '' }, ...rest } = props;
+  const {
+    children,
+    classes = { wrapper: '', title: '', body: '' },
+    open,
+    ...rest
+  } = props;
   delete rest.className;
-  const [open, setOpen] = useState<boolean>(false);
+  const [localOpen, setLocalOpen] = useState<boolean>(false);
+  const [titleElement, setTitleElement] = useState<JSX.Element>(
+    <React.Fragment />
+  );
+  const [bodyElement, setBodyElement] = useState<JSX.Element>(
+    <React.Fragment />
+  );
+  const hasOpenFromProps = useMemo(
+    () => Object.keys(props).includes('open'),
+    [props]
+  );
+  const openToUse = useMemo(
+    () => (hasOpenFromProps ? open : localOpen),
+    [hasOpenFromProps, open, localOpen]
+  );
 
   /* Functions */
   const toggleAccordion = useCallback((): void => {
-    setOpen((prev) => !prev);
+    setLocalOpen((prev) => !prev);
   }, []);
+
+  /* Hooks */
+  useEffect(() => {
+    React.Children.forEach(children, (child, index) => {
+      const c = child as JSX.Element;
+      if (index === 0) {
+        setTitleElement(
+          React.cloneElement(c, {
+            open: openToUse,
+            onClick: hasOpenFromProps ? undefined : toggleAccordion,
+            accordionTitleClass: classes.title,
+          })
+        );
+      }
+      if (index === 1) {
+        setBodyElement(
+          React.cloneElement(c, {
+            open: openToUse,
+            accordionBodyClass: classes.body,
+          })
+        );
+      }
+    });
+  }, [
+    children,
+    openToUse,
+    hasOpenFromProps,
+    classes.title,
+    classes.body,
+    toggleAccordion,
+  ]);
 
   /* Main */
   return (
-    <div className={cn(classes.wrapper)}>
-      <div className={cn(title, classes.title)} onClick={toggleAccordion}>
-        summary
-        <ExpendLessIcon className={cn(iconStyle, open && transformIcon)} />
-      </div>
-      <div className={cn(classes.body)}>body</div>
+    <div className={cn(classes.wrapper)} {...rest}>
+      {titleElement}
+      {bodyElement}
     </div>
   );
 }

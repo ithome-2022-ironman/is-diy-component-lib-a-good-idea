@@ -1,6 +1,8 @@
 import React from 'react';
 
 export interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  open?: boolean;
   classes?: Partial<AccordionClass>;
 }
 
