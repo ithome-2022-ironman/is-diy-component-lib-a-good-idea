@@ -4,7 +4,7 @@ import Accordion from '@Components/Common/Accordion';
 import AccordionTitle from '@Components/Common/Accordion/AccordionTitle';
 import AccordionBody from '@Components/Common/Accordion/AccordionBody';
 
-function AccordionDemo(): React.ReactElement {
+function AccordionsDemo(): React.ReactElement {
   /* States */
   const [currentOpen, setCurrentOpen] = useState<number>(0);
 
@@ -36,4 +36,4 @@ function AccordionDemo(): React.ReactElement {
   );
 }
 
-export default memo(AccordionDemo);
+export default memo(AccordionsDemo);
