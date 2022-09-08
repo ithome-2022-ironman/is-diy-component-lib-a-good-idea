@@ -61,7 +61,7 @@ const whiteText = css({
   color: '#fff',
 });
 
-function Day02(): React.ReactElement {
+function ContainerDemo(): React.ReactElement {
   /* Main */
   return (
     <div
@@ -95,4 +95,4 @@ function Day02(): React.ReactElement {
   );
 }
 
-export default memo(Day02);
+export default memo(ContainerDemo);

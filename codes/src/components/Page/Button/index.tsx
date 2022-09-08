@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import Stack from '@Components/Layout/Stack';
 import Button from '@Components/Common/Button';
 
-function Day10(): React.ReactElement {
+function ButtonDemo(): React.ReactElement {
   return (
     <Stack>
       <Stack direction="row">
@@ -27,4 +27,4 @@ function Day10(): React.ReactElement {
   );
 }
 
-export default memo(Day10);
+export default memo(ButtonDemo);

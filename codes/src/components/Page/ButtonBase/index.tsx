@@ -15,7 +15,7 @@ const iconButton = css({
   borderRadius: '50%',
 });
 
-function Day09(): React.ReactElement {
+function ButtonBaseDemo(): React.ReactElement {
   return (
     <Stack direction="row">
       <ButtonBase className={cn(baseStyle)}>base button</ButtonBase>
@@ -26,4 +26,4 @@ function Day09(): React.ReactElement {
   );
 }
 
-export default memo(Day09);
+export default memo(ButtonBaseDemo);
