@@ -12,9 +12,7 @@ const hide = css({
   display: 'none',
 });
 
-function Tabs<T>(
-  props: React.PropsWithChildren<TabsProps<T>>
-): React.ReactElement {
+function Tabs<T>(props: TabsProps<T>): React.ReactElement {
   /* States */
   const {
     dataArray,

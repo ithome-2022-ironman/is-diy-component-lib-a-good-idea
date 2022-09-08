@@ -10,6 +10,8 @@ import Day09 from '@Components/Page/day09';
 import Day10 from '@Components/Page/day10';
 import Day11 from '@Components/Page/day11';
 import Tabs from '@Components/Page/Tabs';
+import Accordion from '@Components/Page/Accordion';
+import Accordions from '@Components/Page/Accordions';
 
 const appContainer = css({
   height: '100%',
@@ -33,6 +35,8 @@ function Routes(): React.ReactElement {
             <Link to="/day10">10: Button</Link>
             <Link to="/day11">11: UploadButton</Link>
             <Link to="/Tabs">Tabs</Link>
+            <Link to="/Accordion">Accordion</Link>
+            <Link to="/Accordions">Accordions</Link>
           </Stack>
         </div>
         <div className={cn(main)}>
@@ -57,6 +61,12 @@ function Routes(): React.ReactElement {
             </Route>
             <Route path="/Tabs">
               <Tabs />
+            </Route>
+            <Route path="/Accordion">
+              <Accordion />
+            </Route>
+            <Route path="/Accordions">
+              <Accordions />
             </Route>
           </Switch>
         </div>
