@@ -4,11 +4,11 @@ import cn from 'classnames';
 import { css } from '@emotion/css';
 import Link from '@Components/Common/Link';
 import Stack from '@Components/Layout/Stack';
-import Day02 from '@Components/Page/day02';
-import Day03 from '@Components/Page/day03';
-import Day09 from '@Components/Page/day09';
-import Day10 from '@Components/Page/day10';
-import Day11 from '@Components/Page/day11';
+import Container from '@Components/Page/Container';
+import Typography from '@Components/Page/Typography';
+import ButtonBase from '@Components/Page/ButtonBase';
+import Button from '@Components/Page/Button';
+import UploadButton from '@Components/Page/UploadButton';
 import Tabs from '@Components/Page/Tabs';
 import Accordion from '@Components/Page/Accordion';
 import Accordions from '@Components/Page/Accordions';
@@ -29,11 +29,11 @@ function Routes(): React.ReactElement {
         <div className={cn(side)}>
           <Stack>
             <Link to="/">前言：為什麼不用人家寫好的東西</Link>
-            <Link to="/day02">2: Container</Link>
-            <Link to="/day03">3: Typography</Link>
-            <Link to="/day09">9: ButtonBase</Link>
-            <Link to="/day10">10: Button</Link>
-            <Link to="/day11">11: UploadButton</Link>
+            <Link to="/Container">Container</Link>
+            <Link to="/Typography">Typography</Link>
+            <Link to="/ButtonBase">ButtonBase</Link>
+            <Link to="/Button">Button</Link>
+            <Link to="/UploadButton">UploadButton</Link>
             <Link to="/Tabs">Tabs</Link>
             <Link to="/Accordion">Accordion</Link>
             <Link to="/Accordions">Accordions</Link>
@@ -44,20 +44,20 @@ function Routes(): React.ReactElement {
             <Route exact path="/">
               <div>簡介</div>
             </Route>
-            <Route path="/day02">
-              <Day02 />
+            <Route path="/Container">
+              <Container />
             </Route>
-            <Route path="/day03">
-              <Day03 />
+            <Route path="/Typography">
+              <Typography />
             </Route>
-            <Route path="/day09">
-              <Day09 />
+            <Route path="/ButtonBase">
+              <ButtonBase />
             </Route>
-            <Route path="/day10">
-              <Day10 />
+            <Route path="/Button">
+              <Button />
             </Route>
-            <Route path="/day11">
-              <Day11 />
+            <Route path="/UploadButton">
+              <UploadButton />
             </Route>
             <Route path="/Tabs">
               <Tabs />
