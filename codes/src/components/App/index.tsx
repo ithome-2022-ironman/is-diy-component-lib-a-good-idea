@@ -10,12 +10,14 @@ import ButtonBase from '@Components/Page/ButtonBase';
 import Button from '@Components/Page/Button';
 import UploadButton from '@Components/Page/UploadButton';
 import Dialog from '@Components/Page/Dialog';
+import Portal from '@Components/Page/Portal';
 import Tabs from '@Components/Page/Tabs';
 import Accordion from '@Components/Page/Accordion';
 import Accordions from '@Components/Page/Accordions';
 import Tooltip from '@Components/Page/Tooltip';
 import UseElementIsScrollDown from '@Components/Page/useElementIsScrollDown';
 import UseElementScrollPercentage from '@Components/Page/useElementScrollPercentage';
+import TransitionEffect from '@Components/Page/TransitionEffect';
 
 const appContainer = css({
   height: '100%',
@@ -39,6 +41,7 @@ function Routes(): React.ReactElement {
             <Link to="/Button">Button</Link>
             <Link to="/UploadButton">UploadButton</Link>
             <Link to="/Dialog">Dialog</Link>
+            <Link to="/Portal">Portal</Link>
             <Link to="/Tabs">Tabs</Link>
             <Link to="/Accordion">Accordion</Link>
             <Link to="/Accordions">Accordions</Link>
@@ -47,6 +50,7 @@ function Routes(): React.ReactElement {
             <Link to="/useElementScrollPercentage">
               useElementScrollPercentage
             </Link>
+            <Link to="/TransitionEffect">TransitionEffect</Link>
           </Stack>
         </div>
         <div className={cn(main)}>
@@ -72,6 +76,9 @@ function Routes(): React.ReactElement {
             <Route path="/Dialog">
               <Dialog />
             </Route>
+            <Route path="/Portal">
+              <Portal />
+            </Route>
             <Route path="/Tabs">
               <Tabs />
             </Route>
@@ -89,6 +96,9 @@ function Routes(): React.ReactElement {
             </Route>
             <Route path="/useElementScrollPercentage">
               <UseElementScrollPercentage />
+            </Route>
+            <Route path="/TransitionEffect">
+              <TransitionEffect />
             </Route>
           </Switch>
         </div>
