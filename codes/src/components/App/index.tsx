@@ -13,6 +13,8 @@ import Tabs from '@Components/Page/Tabs';
 import Accordion from '@Components/Page/Accordion';
 import Accordions from '@Components/Page/Accordions';
 import Tooltip from '@Components/Page/Tooltip';
+import UseElementIsScrollDown from '@Components/Page/useElementIsScrollDown';
+import UseElementScrollPercentage from '@Components/Page/useElementScrollPercentage';
 
 const appContainer = css({
   height: '100%',
@@ -39,6 +41,10 @@ function Routes(): React.ReactElement {
             <Link to="/Accordion">Accordion</Link>
             <Link to="/Accordions">Accordions</Link>
             <Link to="/Tooltip">Tooltip</Link>
+            <Link to="/useElementIsScrollDown">useElementIsScrollDown</Link>
+            <Link to="/useElementScrollPercentage">
+              useElementScrollPercentage
+            </Link>
           </Stack>
         </div>
         <div className={cn(main)}>
@@ -72,6 +78,12 @@ function Routes(): React.ReactElement {
             </Route>
             <Route path="/Tooltip">
               <Tooltip />
+            </Route>
+            <Route path="/useElementIsScrollDown">
+              <UseElementIsScrollDown />
+            </Route>
+            <Route path="/useElementScrollPercentage">
+              <UseElementScrollPercentage />
             </Route>
           </Switch>
         </div>
