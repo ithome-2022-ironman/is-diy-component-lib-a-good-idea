@@ -12,6 +12,7 @@ import UploadButton from '@Components/Page/UploadButton';
 import Tabs from '@Components/Page/Tabs';
 import Accordion from '@Components/Page/Accordion';
 import Accordions from '@Components/Page/Accordions';
+import Tooltip from '@Components/Page/Tooltip';
 import UseElementIsScrollDown from '@Components/Page/useElementIsScrollDown';
 import UseElementScrollPercentage from '@Components/Page/useElementScrollPercentage';
 
@@ -39,6 +40,7 @@ function Routes(): React.ReactElement {
             <Link to="/Tabs">Tabs</Link>
             <Link to="/Accordion">Accordion</Link>
             <Link to="/Accordions">Accordions</Link>
+            <Link to="/Tooltip">Tooltip</Link>
             <Link to="/useElementIsScrollDown">useElementIsScrollDown</Link>
             <Link to="/useElementScrollPercentage">
               useElementScrollPercentage
@@ -73,6 +75,9 @@ function Routes(): React.ReactElement {
             </Route>
             <Route path="/Accordions">
               <Accordions />
+            </Route>
+            <Route path="/Tooltip">
+              <Tooltip />
             </Route>
             <Route path="/useElementIsScrollDown">
               <UseElementIsScrollDown />
