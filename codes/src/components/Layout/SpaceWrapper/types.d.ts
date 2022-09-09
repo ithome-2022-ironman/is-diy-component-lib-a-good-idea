@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface SpaceWrapperProps
   extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactElement;
+  children: React.ReactNode;
   margin?: Space;
   padding?: Space;
 }
