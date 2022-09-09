@@ -9,6 +9,7 @@ import Typography from '@Components/Page/Typography';
 import ButtonBase from '@Components/Page/ButtonBase';
 import Button from '@Components/Page/Button';
 import UploadButton from '@Components/Page/UploadButton';
+import Dialog from '@Components/Page/Dialog';
 import Tabs from '@Components/Page/Tabs';
 import Accordion from '@Components/Page/Accordion';
 import Accordions from '@Components/Page/Accordions';
@@ -37,6 +38,7 @@ function Routes(): React.ReactElement {
             <Link to="/ButtonBase">ButtonBase</Link>
             <Link to="/Button">Button</Link>
             <Link to="/UploadButton">UploadButton</Link>
+            <Link to="/Dialog">Dialog</Link>
             <Link to="/Tabs">Tabs</Link>
             <Link to="/Accordion">Accordion</Link>
             <Link to="/Accordions">Accordions</Link>
@@ -66,6 +68,9 @@ function Routes(): React.ReactElement {
             </Route>
             <Route path="/UploadButton">
               <UploadButton />
+            </Route>
+            <Route path="/Dialog">
+              <Dialog />
             </Route>
             <Route path="/Tabs">
               <Tabs />
