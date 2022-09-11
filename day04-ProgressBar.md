@@ -8,11 +8,12 @@
 
 ## 修改指南
 
-TODO: day04 修改指南
+- 預設高度：在現行的程式碼中要調整 `props.height` 與 `finalHeight` 中的 fallback 數值。
+- 背景顏色：調整 `props.bg` 即可
 
 ## 自評
 
-- 被取代性：中高，material-ui 的 LinearProgress 搭配 props value 就可以達成類似需求，不過 mui 提供的預設樣式不包含漸變背景。~~贏了一點點~~。
+- 被取代性：高，material-ui 的 LinearProgress 搭配 props value 就可以達成類似需求，不過 mui 提供的預設樣式不包含漸變背景。~~就贏這一點點~~。
 - 開發難度：低，謝謝決定把捲動判定邏輯打包成 custom hook 的我。
 
 簡單實惠。
