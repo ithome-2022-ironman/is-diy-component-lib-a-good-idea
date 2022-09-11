@@ -1,4 +1,4 @@
-import React, { memo, useState, useMemo, useEffect } from 'react';
+import React, { memo, useState, useMemo, useCallback, useEffect } from 'react';
 import { css } from '@emotion/css';
 import cn from 'classnames';
 import type { ImageProps } from './types';
@@ -56,9 +56,9 @@ function Image(props: ImageProps): React.ReactElement {
   const loadCaption = useMemo(() => !hasError && caption, [hasError, caption]);
 
   /* Functions */
-  const handleImgLoadError = (): void => {
+  const handleImgLoadError = useCallback((): void => {
     setHasError(true);
-  };
+  }, []);
 
   /* Hooks */
   useEffect(() => () => setHasError(false), []);
