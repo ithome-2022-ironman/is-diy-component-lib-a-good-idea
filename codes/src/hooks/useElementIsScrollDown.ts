@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 import { debounce } from 'lodash';
 
-export default function useElementIsScrollDown(
-  elementRef: React.MutableRefObject<Element | null>,
+export default function useElementIsScrollDown<T extends Element>(
+  element: T | null,
   delay: number = 100
 ): boolean {
   /* States */
@@ -27,12 +27,11 @@ export default function useElementIsScrollDown(
 
   /* Hooks */
   useEffect(() => {
-    const element = elementRef.current;
     element?.addEventListener('scroll', debouncedLogScrollTop);
     return () => {
       element?.removeEventListener('scroll', debouncedLogScrollTop);
     };
-  }, [elementRef, debouncedLogScrollTop]);
+  }, [element, debouncedLogScrollTop]);
 
   /* Main */
   return isDown;

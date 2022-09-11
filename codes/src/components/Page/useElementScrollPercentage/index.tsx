@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react';
+import React, { memo, useState } from 'react';
 import { css } from '@emotion/css';
 import cn from 'classnames';
 import SpaceWrapper from '@Components/Layout/SpaceWrapper';
@@ -7,8 +7,8 @@ import useElementScrollPercentage from '@Hooks/useElementScrollPercentage';
 
 function useElementIsScrollPercentageDemo(): React.ReactElement {
   /* States */
-  const divRef = useRef<HTMLDivElement | null>(null);
-  const percentage = useElementScrollPercentage(divRef);
+  const [div, setDiv] = useState<HTMLDivElement | null>(null);
+  const percentage = useElementScrollPercentage(div);
 
   /* Main */
   return (
@@ -22,7 +22,7 @@ function useElementIsScrollPercentageDemo(): React.ReactElement {
               overflow: 'auto',
             })
           )}
-          ref={divRef}
+          ref={(node) => setDiv(node)}
         >
           <div className={cn(css({ height: '200vh' }))} />
         </div>
