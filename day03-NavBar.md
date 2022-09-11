@@ -1,6 +1,6 @@
 # day03: NavBar
 
-本日主題：只寫一個固定在畫面上方的導覽列沒什麼誠意，故本日目標是實作 material-ui 的 [Elevate App bar](https://mui.com/material-ui/react-app-bar/#elevate-app-bar) 與 [Hide App bar](https://mui.com/material-ui/react-app-bar/#hide-app-bar) 這兩種導覽列。
+做出一個固定在畫面上方的導覽列沒什麼難度，故本日目標是實作 material-ui 的 [Elevate App bar](https://mui.com/material-ui/react-app-bar/#elevate-app-bar) 與 [Hide App bar](https://mui.com/material-ui/react-app-bar/#hide-app-bar) 這兩種導覽列。
 
 ## 開發思路
 
@@ -12,11 +12,12 @@
 
 能取得「畫面捲動百分比」與「捲動方向」的資料後，這兩個元件分別要處理的內容只剩下：
 - Elevate App bar：根據捲動百分比，來控制元件是否加上 `filter: drop-shadow(...)` 樣式。
-- Hide App bar：預設導覽列 `transform` 樣式為 `translateY(0px)`，在 `useScrollDown` 回傳 `true` 時，設定 `transform` 為 `translateY(-60px)` 將導元件往上方推移。
+- Hide App bar：預設導覽列 `transform` 樣式為 `translateY(0px)`，在 `useScrollDown` 回傳 `true` 時，設定 `transform` 為 `translateY(-60px)` 將導元件往上方推移。並元件被隱藏時，同時取消陰影效果（`navWrapperHide` 的 `filter: unset`）
 
 ## 修改指南
 
-TODO: day03 修改指南
+- Elevate App bar 的陰影設定：調整 `navWrapperBgColor` 中的 `filter` 內容，展示用的陰影數值是透過 [Box Shadow CSS Generator](https://cssgenerator.org/box-shadow-css-generator.html) 產生的
+- Hide App bar 的動畫效果：如果增高了整個元件的高度，需一併修改 `navWrapperHide` 的 `translateY` 數值。
 
 ## 自評
 
