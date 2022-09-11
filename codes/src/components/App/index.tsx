@@ -4,13 +4,16 @@ import cn from 'classnames';
 import { css } from '@emotion/css';
 import Link from '@Components/Common/Link';
 import Stack from '@Components/Layout/Stack';
-import Container from '@Components/Page/Container';
-import Typography from '@Components/Page/Typography';
+import StackDemo from '@Components/Page/Stack';
+import Image from '@Components/Page/Image';
 import ButtonBase from '@Components/Page/ButtonBase';
-import Button from '@Components/Page/Button';
+import Buttons from '@Components/Page/Button';
 import UploadButton from '@Components/Page/UploadButton';
 import Dialog from '@Components/Page/Dialog';
+import Drawer from '@Components/Page/Drawer';
 import Portal from '@Components/Page/Portal';
+import Toast from '@Components/Page/Toast';
+import Toasts from '@Components/Page/Toasts';
 import Tabs from '@Components/Page/Tabs';
 import Accordion from '@Components/Page/Accordion';
 import Accordions from '@Components/Page/Accordions';
@@ -34,41 +37,47 @@ function Routes(): React.ReactElement {
       <div className={cn(appContainer)}>
         <div className={cn(side)}>
           <Stack>
-            <Link to="/">前言：為什麼不用人家寫好的東西</Link>
-            <Link to="/Container">Container</Link>
-            <Link to="/Typography">Typography</Link>
-            <Link to="/ButtonBase">ButtonBase</Link>
-            <Link to="/Button">Button</Link>
-            <Link to="/UploadButton">UploadButton</Link>
-            <Link to="/Dialog">Dialog</Link>
-            <Link to="/Portal">Portal</Link>
-            <Link to="/Tabs">Tabs</Link>
-            <Link to="/Accordion">Accordion</Link>
-            <Link to="/Accordions">Accordions</Link>
-            <Link to="/Tooltip">Tooltip</Link>
+            <Link to="/">簡介</Link>
             <Link to="/useElementIsScrollDown">useElementIsScrollDown</Link>
             <Link to="/useElementScrollPercentage">
               useElementScrollPercentage
             </Link>
+            <Link to="/Stack">Stack</Link>
+            <Link to="/Image">Image</Link>
+            <Link to="/ButtonBase">ButtonBase</Link>
+            <Link to="/Buttons">Buttons</Link>
+            <Link to="/UploadButton">UploadButton</Link>
+            <Link to="/Dialog">Dialog</Link>
+            <Link to="/Drawer">Drawer</Link>
+            <Link to="/Portal">Portal</Link>
+            <Link to="/Toast">Toast</Link>
+            <Link to="/Toasts">Toasts</Link>
+            <Link to="/Tabs">Tabs</Link>
+            <Link to="/Accordion">Accordion</Link>
+            <Link to="/Accordions">Accordions</Link>
+            <Link to="/Tooltip">Tooltip</Link>
             <Link to="/TransitionEffect">TransitionEffect</Link>
           </Stack>
         </div>
         <div className={cn(main)}>
           <Switch>
             <Route exact path="/">
-              <div>簡介</div>
+              <div>
+                2022 鐵人賽「我們可以不要 component library
+                了嗎？」部分元件展示區
+              </div>
             </Route>
-            <Route path="/Container">
-              <Container />
+            <Route path="/Stack">
+              <StackDemo />
             </Route>
-            <Route path="/Typography">
-              <Typography />
+            <Route path="/Image">
+              <Image />
             </Route>
             <Route path="/ButtonBase">
               <ButtonBase />
             </Route>
-            <Route path="/Button">
-              <Button />
+            <Route path="/Buttons">
+              <Buttons />
             </Route>
             <Route path="/UploadButton">
               <UploadButton />
@@ -76,8 +85,17 @@ function Routes(): React.ReactElement {
             <Route path="/Dialog">
               <Dialog />
             </Route>
+            <Route path="/Drawer">
+              <Drawer />
+            </Route>
             <Route path="/Portal">
               <Portal />
+            </Route>
+            <Route path="/Toast">
+              <Toast />
+            </Route>
+            <Route path="/Toasts">
+              <Toasts />
             </Route>
             <Route path="/Tabs">
               <Tabs />
