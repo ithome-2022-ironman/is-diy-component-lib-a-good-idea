@@ -1,6 +1,6 @@
 # day03: NavBar
 
-做出一個固定在畫面上方的導覽列沒什麼難度，故本日目標是實作 material-ui 的 [Elevate App bar](https://mui.com/material-ui/react-app-bar/#elevate-app-bar) 與 [Hide App bar](https://mui.com/material-ui/react-app-bar/#hide-app-bar) 這兩種導覽列。
+做出一個固定在畫面上方的導覽列沒什麼難度，故本日目標是實作 MUI 的 [Elevate App bar](https://mui.com/material-ui/react-app-bar/#elevate-app-bar) 與 [Hide App bar](https://mui.com/material-ui/react-app-bar/#hide-app-bar) 這兩種導覽列。
 
 ## 開發思路
 
@@ -21,7 +21,4 @@
 
 ## 自評
 
-- 被取代性：高，有現成的。
-- 開發難度：中低，邏輯並不複雜。
-
-還可以，至少沒有花很多時間從頭開始造輪子。
+邏輯不難，與 material-ui 提供的範例程式碼比較起來短很多，可讀性也不錯，值得。
