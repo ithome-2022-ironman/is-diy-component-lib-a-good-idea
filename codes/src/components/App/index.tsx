@@ -21,6 +21,7 @@ import Tooltip from '@Components/Page/Tooltip';
 import UseElementIsScrollDown from '@Components/Page/useElementIsScrollDown';
 import UseElementScrollPercentage from '@Components/Page/useElementScrollPercentage';
 import TransitionEffect from '@Components/Page/TransitionEffect';
+import UseSystemColorScheme from '@Components/Page/useSystemColorScheme';
 
 const appContainer = css({
   height: '100%',
@@ -57,6 +58,7 @@ function Routes(): React.ReactElement {
             <Link to="/Accordions">Accordions</Link>
             <Link to="/Tooltip">Tooltip</Link>
             <Link to="/TransitionEffect">TransitionEffect</Link>
+            <Link to="/useSystemColorScheme">useSystemColorScheme</Link>
           </Stack>
         </div>
         <div className={cn(main)}>
@@ -117,6 +119,9 @@ function Routes(): React.ReactElement {
             </Route>
             <Route path="/TransitionEffect">
               <TransitionEffect />
+            </Route>
+            <Route path="/useSystemColorScheme">
+              <UseSystemColorScheme />
             </Route>
           </Switch>
         </div>
