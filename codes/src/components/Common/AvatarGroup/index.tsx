@@ -16,11 +16,10 @@ function AvatarGroup(props: AvatarGroupProps): React.ReactElement {
       const c = child as JSX.Element;
       result.push(React.cloneElement(c, { withBorder: true }));
     });
-    if (typeof max === 'number' && max > 0) {
-      result = result.slice(0, max);
-      result.push(
-        <Avatar withBorder>+{React.Children.count(children) - max}</Avatar>
-      );
+    const childrenLength = React.Children.count(children);
+    if (typeof max === 'number' && max > 1 && max < childrenLength) {
+      result = result.slice(0, max - 1);
+      result.push(<Avatar withBorder>+{childrenLength - (max - 1)}</Avatar>);
     }
     setChildrenArr(result.reverse());
   }, [children, max]);
