@@ -5,6 +5,13 @@ import SpaceWrapper from '@Components/Layout/SpaceWrapper';
 import Stack from '@Components/Layout/Stack';
 import useElementIsScrollDown from '@Hooks/useElementIsScrollDown';
 
+const boxWrapper = css({
+  height: '400px',
+  border: '1px solid #333',
+  overflow: 'auto',
+});
+const boxLong = css({ height: '200vh' });
+
 function useElementIsScrollDownDemo(): React.ReactElement {
   /* States */
   const divRef = useRef<HTMLDivElement | null>(null);
@@ -14,17 +21,8 @@ function useElementIsScrollDownDemo(): React.ReactElement {
   return (
     <Stack>
       <SpaceWrapper padding={24}>
-        <div
-          className={cn(
-            css({
-              height: '400px',
-              border: '1px solid #333',
-              overflow: 'auto',
-            })
-          )}
-          ref={divRef}
-        >
-          <div className={cn(css({ height: '200vh' }))} />
+        <div className={cn(boxWrapper)} ref={divRef}>
+          <div className={cn(boxLong)} />
         </div>
       </SpaceWrapper>
       <SpaceWrapper padding={[0, 24]}>
