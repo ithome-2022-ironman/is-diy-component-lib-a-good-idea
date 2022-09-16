@@ -9,6 +9,8 @@ function Stack(props: StackProps): React.ReactElement {
     children,
     gap = '16px',
     direction = 'column',
+    justifyContent = 'center',
+    alignItems = 'center',
     divider = null,
     className,
     ...rest
@@ -19,11 +21,8 @@ function Stack(props: StackProps): React.ReactElement {
     if (divider) {
       const withDivider: JSX.Element[] = [];
       React.Children.forEach(children, (child, index) => {
-        const c = child as JSX.Element;
         withDivider.push(
-          <React.Fragment key={`${index}-child`}>{c}</React.Fragment>
-        );
-        withDivider.push(
+          <React.Fragment key={`${index}-child`}>{child}</React.Fragment>,
           <React.Fragment key={`${index}-divider`}>{divider}</React.Fragment>
         );
       });
@@ -42,6 +41,8 @@ function Stack(props: StackProps): React.ReactElement {
           gap,
           flexDirection: direction,
           flexWrap: 'wrap',
+          justifyContent,
+          alignItems,
         }),
         className
       )}
