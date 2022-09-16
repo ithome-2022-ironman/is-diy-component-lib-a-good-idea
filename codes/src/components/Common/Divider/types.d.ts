@@ -1,9 +1,17 @@
+import type React from 'react';
 import type { Property } from 'csstype';
 
 export interface DividerProps extends React.HTMLAttributes<HTMLHRElement> {
   orientation?: 'horizontal' | 'vertical';
   color?: Property.Background;
-  thick?: Property.Height | Property.Width;
+  gradientColor?: boolean;
+  thick?: number;
+  style?: Property.BorderBottomStyle;
+  labelStyle?: string;
+  labelAlign?:
+    | Property.TextAlign
+    | NonNullable<Property.TextAlign | undefined>[]
+    | Property.TextAlign[];
 }
 
 export type { Property };
