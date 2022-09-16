@@ -1,7 +1,9 @@
 import React, { memo, useMemo } from 'react';
 import cn from 'classnames';
 import { css } from '@emotion/css';
+import SpaceWrapper from '@Components/Layout/SpaceWrapper';
 import Stack from '@Components/Layout/Stack';
+import Divider from '@Components/Common/Divider';
 import Image from '@Components/Common/Image';
 import foxSrc from '@Assets/erik-mclean-OVWn1sbGIYQ-unsplash.jpg';
 
@@ -51,15 +53,17 @@ function ImageDemo(): React.ReactElement {
 
   /* Main */
   return (
-    <Stack divider={<hr />}>
-      <Image
-        height="300px"
-        caption={foxCaption}
-        src={foxSrc}
-        alt="fox on the road"
-      />
-      <Image src="..." />
-    </Stack>
+    <SpaceWrapper padding={[16, 0]}>
+      <Stack divider={<Divider />}>
+        <Image
+          height="300px"
+          caption={foxCaption}
+          src={foxSrc}
+          alt="fox on the road"
+        />
+        <Image src="..." />
+      </Stack>
+    </SpaceWrapper>
   );
 }
 
