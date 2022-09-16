@@ -1,10 +1,10 @@
-import React, { memo, useRef } from 'react';
+import React, { memo, useState } from 'react';
 import { css } from '@emotion/css';
 import cn from 'classnames';
 import SpaceWrapper from '@Components/Layout/SpaceWrapper';
 import Stack from '@Components/Layout/Stack';
 import ProgressBar from '@Components/Common/ProgressBar';
-import useElementScrollPercentage from '@Hooks/useElementScrollPercentage';
+import useElementScrollPercentage2 from '@Hooks/useElementScrollPercentage2';
 
 const perspectiveLayer = css({
   perspective: '99999px',
@@ -23,8 +23,8 @@ const boxLong = css({ height: '200vh' });
 
 function useElementIsScrollPercentageDemo(): React.ReactElement {
   /* States */
-  const divRef = useRef<HTMLDivElement | null>(null);
-  const percentage = useElementScrollPercentage(divRef, 10);
+  const [div, setDiv] = useState<HTMLDivElement | null>(null);
+  const percentage = useElementScrollPercentage2(div);
 
   /* Main */
   return (
@@ -36,7 +36,7 @@ function useElementIsScrollPercentageDemo(): React.ReactElement {
             classes={{ bar: fixedTop, barBackground: fixedTop }}
           />
         </div>
-        <div className={cn(boxWrapper)} ref={divRef}>
+        <div className={cn(boxWrapper)} ref={(node) => setDiv(node)}>
           <div className={cn(boxLong)} />
         </div>
       </SpaceWrapper>

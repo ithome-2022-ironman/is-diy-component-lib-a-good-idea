@@ -20,7 +20,7 @@ function useElementIsScrollDownDemo(): React.ReactElement {
   /* Main */
   return (
     <Stack>
-      <SpaceWrapper padding={24}>
+      <SpaceWrapper padding={24} className={cn(css({ width: '100%' }))}>
         <div className={cn(boxWrapper)} ref={divRef}>
           <div className={cn(boxLong)} />
         </div>
