@@ -1,10 +1,10 @@
 # day06: SpaceWrapper
 
-其實就是把 margin 跟 padding 打包成元件的 props 來傳入樣式設定。搭配現有的元件來微調排版很方便。
+其實就是把 margin 跟 padding 打包成元件的 props 來定義元件樣式。搭配現有的元件來微調排版很方便。
 
 ## 開發思路
 
-想做出類似原生 CSS 中輸入 1 到 4 個數值都能對應的樣式設定，且 padding 與 margin 可共用同一套邏輯，於是有了 `getSpace` function
+想還原 margin 與 padding 在原生 CSS 中輸入 1 到 4 個數值都能對應的設計，且 padding 與 margin 可共用同一套邏輯，於是有了 `getSpace` function
 
 - 傳入單一數字時，結果為 `margin/padding: {props}px`
 - 傳入陣列時：

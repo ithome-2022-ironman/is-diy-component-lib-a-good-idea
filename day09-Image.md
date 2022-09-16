@@ -10,9 +10,10 @@
 
 但是懶惰的工程師希望這個元件能在 `src` 連結失效時，不要顯示醜醜的破圖畫面，所以加入了偽元素 `::after`
 
-因此 `Image` 元件就這麼誕生了 (ﾟ∀ﾟ)
+因此 `Image` 元件就這麼誕生了 (ﾟ ∀ ﾟ)
 
 ## 開發思路
+
 ### 外觀部分
 
 把 `width` 與 `height` 等常用的 CSS 樣式移動到 `props` 方便設定。
@@ -23,6 +24,7 @@
 
 使用 `handleImgLoadError` 來偵測 `img` 本身是否遭遇錯誤，若有，則套用 `props.class.onError` 樣式。
 原始碼相關段落如下：
+
 ```tsx
 // codes/src/components/Base/ImageBase/index.tsx
 /* States */
@@ -34,14 +36,15 @@ const handleImgLoadError = useCallback((): void => {
 }, []);
 
 /* Main */
-<img 
+<img
   className={cn(imgStyle, hasError && classes.onError, classes.img)}
   onError={handleImgLoadError}
-/>
+/>;
 ```
 
 而為了遮蓋破圖畫面，使用 `::after` 搭配滿版背景色來進行覆蓋。
 相關樣式設定如下：
+
 ```tsx
 // codes/src/components/Common/Image/index.tsx
 
@@ -71,11 +74,13 @@ const onErrorStyle = css({
 主要是考慮到 avatar 或 icon 此類小圖片的 width/height 尺寸通常與一般圖片不同，將 onError 樣式移動到 Image 來設定可以保留較多彈性。通通寫死在 ImageBase 裡面會讓大小尺寸相差很多的圖片元件共享同一套 onError 樣式，我認為這樣反而比較不理想，故截稿前還是決定採用 ImageBase 與 Image 分拆的設計方式。
 
 ## 修改指南
+
 ### 想在 onError 時顯示替代圖片而不是文字
 
 破圖時的 fallback 如果需要顯示圖片的話，可以採用 background-image 的形式來放圖：
+
 ```tsx
-import backgroundSrc from '@Assets/image.jpg'
+import backgroundSrc from '@Assets/image.jpg';
 
 const onErrorStyle = css({
   display: 'block',
@@ -107,4 +112,4 @@ const onErrorStyle = css({
 
 ## 自評
 
-有解決連結失效時的破圖問題，還可以。
+一天又平安的過去了，感謝 Image 元件解決連結失效時的破圖問題。
