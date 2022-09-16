@@ -1,8 +1,15 @@
 import React, { memo } from 'react';
 import { css } from '@emotion/css';
 import cn from 'classnames';
+import { NavigateIcon } from '@Assets/icons';
 import Stack from '@Components/Layout/Stack';
 
+const hrStyle = css({
+  width: '100%',
+  height: '1px',
+  border: 'none',
+  background: 'linear-gradient(to right, #eee, #201609, #eee)',
+});
 const BigBoxStyle = css({
   height: '200px',
   width: '300px',
@@ -16,7 +23,6 @@ const SmallBoxStyle = css({
   backgroundColor: '#4e342e',
   color: '#fff',
 });
-const justifyContentCenter = css({ justifyContent: 'center' });
 const dividerStyle = css({
   height: '48px',
   width: '13px',
@@ -36,9 +42,9 @@ const dividerStyle = css({
 function StackDemo(): React.ReactElement {
   /* Main */
   return (
-    <Stack divider={<hr />}>
+    <Stack divider={<hr className={cn(hrStyle)} />}>
       <div className={cn(BigBoxStyle)} />
-      <Stack gap="24px" direction="row" className={cn(justifyContentCenter)}>
+      <Stack gap="24px" direction="row">
         <div className={cn(SmallBoxStyle)} />
         <div className={cn(SmallBoxStyle)} />
         <div className={cn(SmallBoxStyle)} />
@@ -48,16 +54,17 @@ function StackDemo(): React.ReactElement {
         <div className={cn(SmallBoxStyle)} />
       </Stack>
       <div className={cn(BigBoxStyle)} />
-      <Stack
-        direction="row"
-        className={cn(justifyContentCenter)}
-        divider={<span className={css(dividerStyle)} />}
-      >
+      <Stack direction="row" divider={<span className={css(dividerStyle)} />}>
         <div className={cn(SmallBoxStyle)} />
         <div className={cn(SmallBoxStyle)} />
         <div className={cn(SmallBoxStyle)} />
         <div className={cn(SmallBoxStyle)} />
         <div className={cn(SmallBoxStyle)} />
+      </Stack>
+      <Stack direction="row" divider={<NavigateIcon />} gap="6px">
+        <span>Here</span>
+        <span>Comes</span>
+        <span>Breadcrumb</span>
       </Stack>
     </Stack>
   );
