@@ -11,6 +11,6 @@ export interface ToastProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 interface ToastClasses {
-  snack: string;
+  toast: string;
   closeButton: string;
 }

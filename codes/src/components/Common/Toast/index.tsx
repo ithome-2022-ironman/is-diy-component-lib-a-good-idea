@@ -1,7 +1,9 @@
 import React, { memo, useMemo, createRef, useCallback, useEffect } from 'react';
 import { css, keyframes } from '@emotion/css';
 import cn from 'classnames';
+import { CloseIcon } from '@Assets/icons';
 import Portal from '@Components/Layer/Portal';
+import ButtonBase from '@Components/Base/ButtonBase';
 import type { ToastProps } from './types';
 
 const countDownAnimation = keyframes`
@@ -21,7 +23,7 @@ function Toast(props: ToastProps): React.ReactElement {
     countDown = 2000,
     disableAutoClose = false,
     pauseOnHover = false,
-    classes = { snack: '', closeButton: '' },
+    classes = { toast: '', closeButton: '' },
     onClose,
     ...rest
   } = props;
@@ -40,12 +42,43 @@ function Toast(props: ToastProps): React.ReactElement {
               top: 0,
               left: 0,
               backgroundColor: '#4e342e',
-              transform: 'scaleX(0%)',
               transformOrigin: 'top left',
               animation: `${countDownAnimation} ${animationDuration}s ease`,
             },
           }),
     [disableAutoClose, animationDuration]
+  );
+  const defaultToastStyle = useMemo(
+    () =>
+      css({
+        minHeight: '60px',
+        minWidth: '240px',
+        display: 'inline-block',
+        position: 'fixed',
+        top: '24px',
+        right: '24px',
+        padding: '8px',
+        backgroundColor: '#fff',
+        '&:hover::before': {
+          animationPlayState: pauseOnHover ? 'paused' : 'running',
+        },
+      }),
+    [pauseOnHover]
+  );
+  const defaultCloseBtnStyle = useMemo(
+    () =>
+      css({
+        width: '24px',
+        height: '24px',
+        position: 'absolute',
+        top: '8px',
+        right: '8px',
+        borderRadius: '24px',
+        border: 'none',
+        backgroundColor: 'transparent',
+        cursor: 'pointer',
+      }),
+    []
   );
   const snackRef = createRef<HTMLDivElement>();
 
@@ -68,45 +101,16 @@ function Toast(props: ToastProps): React.ReactElement {
   return show ? (
     <Portal>
       <div
-        className={cn(
-          css({
-            minHeight: '60px',
-            minWidth: '240px',
-            display: 'inline-block',
-            position: 'fixed',
-            top: '24px',
-            right: '24px',
-            padding: '8px',
-            backgroundColor: '#fff',
-            '&:hover::before': {
-              animationPlayState: pauseOnHover ? 'paused' : 'running',
-            },
-          }),
-          progressBarStyle,
-          classes.snack
-        )}
+        className={cn(defaultToastStyle, progressBarStyle, classes.toast)}
         ref={snackRef}
       >
         {children}
-        <button
-          type="button"
+        <ButtonBase
           onClick={onClose}
-          className={cn(
-            css({
-              width: '24px',
-              height: '24px',
-              position: 'absolute',
-              top: '8px',
-              right: '8px',
-              borderRadius: '24px',
-              border: 'none',
-              cursor: 'pointer',
-            }),
-            classes.closeButton
-          )}
+          className={cn(defaultCloseBtnStyle, classes.closeButton)}
         >
-          X
-        </button>
+          <CloseIcon width={16} height={16} />
+        </ButtonBase>
       </div>
     </Portal>
   ) : (
