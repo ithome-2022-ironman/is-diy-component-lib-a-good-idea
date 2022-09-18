@@ -13,10 +13,6 @@ to {
 }
 `;
 const defaultDialogStyle = css({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
   margin: '0',
   padding: '24px',
   borderRadius: '8px',
@@ -28,8 +24,10 @@ const defaultBackdropStyle = css({
   width: '100vw',
   height: '100vh',
   position: 'fixed',
-  top: '0',
-  left: '0',
+  inset: '0',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   backgroundColor: 'rgba(0, 0, 0, 0.6)',
   animation: `${opacityIn} 0.25s`,
 });
