@@ -39,12 +39,17 @@ const baseStyle = css({
   fontSize: '14px',
 });
 const baseArrowStyle = css({
+  width: '8px',
+  height: '8px',
+  position: 'absolute',
+  overflow: 'hidden',
   '&::after': {
     content: '""',
-    width: '8px',
-    height: '8px',
+    width: '100%',
+    height: '100%',
     position: 'absolute',
     backgroundColor: 'rgba(113, 92, 87, .7)',
+    transform: 'rotate(45deg)',
   },
 });
 
@@ -222,7 +227,57 @@ function Tooltip(props: ToolTipProps): React.ReactElement {
       default:
         return '';
     }
-  }, [position, childPosition, gap, arrow]);
+  }, [position, childPosition, gap]);
+  const positionArrowStyle = useMemo(() => {
+    switch (position) {
+      case 'bottom-left':
+      case 'bottom-right':
+      case 'bottom':
+        return css({
+          top: '-8px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          '&::after': {
+            top: '6px',
+          },
+        });
+      case 'right-top':
+      case 'right-bottom':
+      case 'right':
+        return css({
+          top: '50%',
+          left: '-8px',
+          transform: 'translateY(-50%)',
+          '&::after': {
+            left: '6px',
+          },
+        });
+      case 'top-left':
+      case 'top-right':
+      case 'top':
+        return css({
+          bottom: '-8px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          '&::after': {
+            top: '-6px',
+          },
+        });
+      case 'left-top':
+      case 'left-bottom':
+      case 'left':
+        return css({
+          top: '50%',
+          right: '-8px',
+          transform: 'translateY(-50%)',
+          '&::after': {
+            right: '6px',
+          },
+        });
+      default:
+        return '';
+    }
+  }, [position]);
 
   /* Main */
   return (
@@ -234,16 +289,12 @@ function Tooltip(props: ToolTipProps): React.ReactElement {
       >
         {children}
       </span>
-      {true && (
+      {shouldShow && (
         <Portal>
-          <span
-            className={cn(
-              baseStyle,
-              arrow && baseArrowStyle,
-              animationStyle,
-              finalStyle
+          <span className={cn(baseStyle, animationStyle, finalStyle)}>
+            {arrow && (
+              <span className={cn(baseArrowStyle, positionArrowStyle)} />
             )}
-          >
             {tip}
           </span>
         </Portal>
