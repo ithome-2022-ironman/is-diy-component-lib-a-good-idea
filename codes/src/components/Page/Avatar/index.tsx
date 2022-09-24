@@ -21,24 +21,28 @@ function AvatarDemo(): React.ReactElement {
           <PhotoCameraIcon fill="#fff" />
         </Avatar>
       </SpaceWrapper>
-      <AvatarGroup>
-        <Avatar src={foxSrc} />
-        <Avatar>C</Avatar>
-        <Avatar src="..." />
-        <Avatar>
-          <PhotoCameraIcon fill="#fff" />
-        </Avatar>
-        <Avatar>F</Avatar>
-      </AvatarGroup>
-      <AvatarGroup max={4}>
-        <Avatar src={foxSrc} />
-        <Avatar>C</Avatar>
-        <Avatar src="..." />
-        <Avatar>
-          <PhotoCameraIcon fill="#fff" />
-        </Avatar>
-        <Avatar>F</Avatar>
-      </AvatarGroup>
+      <SpaceWrapper padding={8}>
+        <AvatarGroup>
+          <Avatar src={foxSrc} />
+          <Avatar>C</Avatar>
+          <Avatar src="..." />
+          <Avatar>
+            <PhotoCameraIcon fill="#fff" />
+          </Avatar>
+          <Avatar>F</Avatar>
+        </AvatarGroup>
+      </SpaceWrapper>
+      <SpaceWrapper padding={8}>
+        <AvatarGroup max={4}>
+          <Avatar src={foxSrc} />
+          <Avatar>C</Avatar>
+          <Avatar src="..." />
+          <Avatar>
+            <PhotoCameraIcon fill="#fff" />
+          </Avatar>
+          <Avatar>F</Avatar>
+        </AvatarGroup>
+      </SpaceWrapper>
     </Stack>
   );
 }
