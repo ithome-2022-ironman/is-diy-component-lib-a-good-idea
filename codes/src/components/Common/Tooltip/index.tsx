@@ -99,130 +99,70 @@ function Tooltip(props: ToolTipProps): React.ReactElement {
           top: `${childPosition.top}px`,
           left: `${childPosition.left}px`,
           transform: `translateY(calc(-100% - ${gap}px))`,
-          '&::after': {
-            bottom: '-4px',
-            left: '50%',
-            transform: 'translateX(-50%) rotate(45deg)',
-          },
         });
       case 'top':
         return css({
           top: `${childPosition.top}px`,
           left: `${(childPosition.left + childPosition.right) / 2}px`,
           transform: `translateX(-50%) translateY(calc(-100% - ${gap}px))`,
-          '&::after': {
-            bottom: '-4px',
-            left: '50%',
-            transform: 'translateX(-50%) rotate(45deg)',
-          },
         });
       case 'top-right':
         return css({
           top: `${childPosition.top}px`,
           left: `${childPosition.right}px`,
           transform: `translateX(-100%) translateY(calc(-100% - ${gap}px))`,
-          '&::after': {
-            bottom: '-4px',
-            left: '50%',
-            transform: 'translateX(-50%) rotate(45deg)',
-          },
         });
       case 'right-top':
         return css({
           top: `${childPosition.top}px`,
           left: `${childPosition.right + gap}px`,
-          '&::after': {
-            top: '50%',
-            left: '-4px',
-            transform: 'translateY(-50%) rotate(45deg)',
-          },
         });
       case 'right':
         return css({
           top: `${(childPosition.top + childPosition.bottom) / 2}px`,
           left: `${childPosition.right + gap}px`,
           transform: 'translateY(-50%)',
-          '&::after': {
-            top: '50%',
-            left: '-4px',
-            transform: 'translateY(-50%) rotate(45deg)',
-          },
         });
       case 'right-bottom':
         return css({
           top: `${childPosition.bottom}px`,
           left: `${childPosition.right + gap}px`,
           transform: 'translateY(-100%)',
-          '&::after': {
-            top: '50%',
-            left: '-4px',
-            transform: 'translateY(-50%) rotate(45deg)',
-          },
         });
       case 'bottom-left':
         return css({
           top: `${childPosition.bottom + gap}px`,
           left: `${childPosition.left}px`,
-          '&::after': {
-            top: '-4px',
-            left: '50%',
-            transform: 'translateX(-50%) rotate(45deg)',
-          },
         });
       case 'bottom':
         return css({
           top: `${childPosition.bottom + gap}px`,
           left: `${(childPosition.left + childPosition.right) / 2}px`,
           transform: 'translateX(-50%)',
-          '&::after': {
-            top: '-4px',
-            left: '50%',
-            transform: 'translateX(-50%) rotate(45deg)',
-          },
         });
       case 'bottom-right':
         return css({
           top: `${childPosition.bottom + gap}px`,
           left: `${childPosition.right}px`,
           transform: 'translateX(-100%)',
-          '&::after': {
-            top: '-4px',
-            left: '50%',
-            transform: 'translateX(-50%) rotate(45deg)',
-          },
         });
       case 'left-top':
         return css({
           top: `${childPosition.top}px`,
           left: `${childPosition.left}px`,
           transform: `translateX(calc(-100% - ${gap}px))`,
-          '&::after': {
-            top: '50%',
-            right: '-4px',
-            transform: 'translateY(-50%) rotate(45deg)',
-          },
         });
       case 'left':
         return css({
           top: `${(childPosition.top + childPosition.bottom) / 2}px`,
           left: `${childPosition.left}px`,
           transform: `translateX(calc(-100% - ${gap}px)) translateY(calc(-50%))`,
-          '&::after': {
-            top: '50%',
-            right: '-4px',
-            transform: 'translateY(-50%) rotate(45deg)',
-          },
         });
       case 'left-bottom':
         return css({
           top: `${childPosition.bottom}px`,
           left: `${childPosition.left}px`,
           transform: `translateX(calc(-100% - ${gap}px)) translateY(-100%)`,
-          '&::after': {
-            top: '50%',
-            right: '-4px',
-            transform: 'translateY(-50%) rotate(45deg)',
-          },
         });
       default:
         return '';
