@@ -38,11 +38,24 @@ const baseStyle = css({
   color: '#fff',
   fontSize: '14px',
 });
+const baseArrowStyle = css({
+  width: '8px',
+  height: '8px',
+  position: 'absolute',
+  overflow: 'hidden',
+  '&::after': {
+    content: '""',
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    backgroundColor: 'rgba(113, 92, 87, .7)',
+    transform: 'rotate(45deg)',
+  },
+});
 
-// TODO: arrow
 function Tooltip(props: ToolTipProps): React.ReactElement {
   /* States */
-  const { children, tip, gap = 8, position = 'bottom' } = props;
+  const { children, tip, gap = 8, position = 'bottom', arrow = true } = props;
   const childRef = useRef<HTMLElement | null>(null);
   const [show, setShow] = useState<boolean>(false);
   const [childPosition, setChildPosition] = useState({
@@ -159,17 +172,60 @@ function Tooltip(props: ToolTipProps): React.ReactElement {
         });
     }
   }, [position, childPosition, gap]);
+  const positionArrowStyle = useMemo(() => {
+    switch (position) {
+      case 'bottom-left':
+      case 'bottom-right':
+      case 'bottom':
+        return css({
+          top: '-8px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          '&::after': {
+            top: '6px',
+          },
+        });
+      case 'right-top':
+      case 'right-bottom':
+      case 'right':
+        return css({
+          top: '50%',
+          left: '-8px',
+          transform: 'translateY(-50%)',
+          '&::after': {
+            left: '6px',
+          },
+        });
+      case 'top-left':
+      case 'top-right':
+      case 'top':
+        return css({
+          bottom: '-8px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          '&::after': {
+            top: '-6px',
+          },
+        });
+      case 'left-top':
+      case 'left-bottom':
+      case 'left':
+        return css({
+          top: '50%',
+          right: '-8px',
+          transform: 'translateY(-50%)',
+          '&::after': {
+            right: '6px',
+          },
+        });
+      default:
+        return '';
+    }
+  }, [position]);
 
   /* Main */
   return (
     <React.Fragment>
-      {/* <span
-        onMouseOver={() => setShow(true)}
-        onMouseOut={() => setShow(false)}
-        ref={childRef}
-      >
-        {children}
-      </span> */}
       {React.cloneElement(children, {
         onMouseOver: () => setShow(true),
         onMouseOut: () => setShow(false),
@@ -178,6 +234,9 @@ function Tooltip(props: ToolTipProps): React.ReactElement {
       {shouldShow && (
         <Portal>
           <span className={cn(baseStyle, animationStyle, finalStyle)}>
+            {arrow && (
+              <span className={cn(baseArrowStyle, positionArrowStyle)} />
+            )}
             {tip}
           </span>
         </Portal>

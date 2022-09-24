@@ -17,4 +17,5 @@ export interface ToolTipProps extends React.HTMLAttributes<HTMLDivElement> {
     | 'left'
     | 'left-top'
     | 'left-bottom';
+  arrow?: boolean;
 }
