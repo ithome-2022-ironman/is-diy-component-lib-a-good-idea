@@ -9,10 +9,7 @@ const badgeWrapperStyle = css({
   position: 'relative',
   verticalAlign: 'middle',
 });
-const badgeBaseStyle = css({
-  minWidth: '20px',
-  height: '20px',
-  padding: '6px',
+const baseStyle = css({
   position: 'absolute',
   display: 'inline-flex',
   justifyContent: 'center',
@@ -22,12 +19,22 @@ const badgeBaseStyle = css({
   fontFamily: 'inherit',
   whiteSpace: 'nowrap',
 });
+const standardStyle = css({
+  minWidth: '20px',
+  height: '20px',
+  padding: '6px',
+});
+const dotStyle = css({
+  width: '8px',
+  height: '8px',
+});
 
 function Badge(props: BadgeProps): React.ReactElement {
   /* States */
   const {
     children,
     badgeContent,
+    variant = 'standard',
     vertical = 'top',
     horizontal = 'right',
     badgeColor = '#000',
@@ -54,18 +61,29 @@ function Badge(props: BadgeProps): React.ReactElement {
       }),
     [vertical, horizontal]
   );
+  const renderBadge = useMemo(() => {
+    if (variant === 'dot') {
+      return (
+        <span className={cn(baseStyle, dotStyle, colorStyle, positionStyle)} />
+      );
+    }
+    if (badgeContent) {
+      return (
+        <span
+          className={cn(baseStyle, standardStyle, colorStyle, positionStyle)}
+        >
+          {badgeContent}
+        </span>
+      );
+    }
+    return <React.Fragment />;
+  }, [variant, badgeContent, colorStyle, positionStyle]);
 
   /* Main */
   return (
     <span className={cn(badgeWrapperStyle)}>
       {children}
-      {badgeContent ? (
-        <span className={cn(badgeBaseStyle, colorStyle, positionStyle)}>
-          {badgeContent}
-        </span>
-      ) : (
-        <React.Fragment />
-      )}
+      {renderBadge}
     </span>
   );
 }
