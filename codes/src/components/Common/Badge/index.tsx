@@ -5,9 +5,7 @@ import type { BadgeProps } from './types';
 
 const badgeWrapperStyle = css({
   display: 'inline-flex',
-  flexShrink: 0,
   position: 'relative',
-  verticalAlign: 'middle',
 });
 const baseStyle = css({
   position: 'absolute',
