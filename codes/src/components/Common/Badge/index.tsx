@@ -10,8 +10,8 @@ const badgeWrapperStyle = css({
   verticalAlign: 'middle',
 });
 const badgeBaseStyle = css({
-  minWidth: '8px',
-  height: '8px',
+  minWidth: '20px',
+  height: '20px',
   padding: '6px',
   position: 'absolute',
   display: 'inline-flex',
