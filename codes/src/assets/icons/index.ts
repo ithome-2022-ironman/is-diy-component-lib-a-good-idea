@@ -1,8 +1,14 @@
+export { ReactComponent as CheckboxIcon } from './check_box_black_24dp.svg';
+export { ReactComponent as CheckboxOutlineIcon } from './check_box_outline_blank_black_24dp.svg';
 export { ReactComponent as CloseIcon } from './close_black_24dp.svg';
 export { ReactComponent as ExpendLessIcon } from './expand_less_black_24dp.svg';
 export { ReactComponent as ExpendMoreIcon } from './expand_more_black_24dp.svg';
+export { ReactComponent as FavoriteIcon } from './favorite_black_24dp.svg';
+export { ReactComponent as FavoriteBorderIcon } from './favorite_border_black_24dp.svg';
 export { ReactComponent as InsertPhotoIcon } from './insert_photo_black_24dp.svg';
 export { ReactComponent as NavigateIcon } from './navigate_next_black_24dp.svg';
 export { ReactComponent as PersonIcon } from './person_black_24dp.svg';
 export { ReactComponent as PhotoCameraIcon } from './photo_camera_black_24dp.svg';
 export { ReactComponent as StarIcon } from './star_black_24dp.svg';
+export { ReactComponent as StarBorderIcon } from './star_border_purple500_black_24dp.svg';
+export { ReactComponent as StarFillIcon } from './star_purple500_black_24dp.svg';
