@@ -1,14 +1,8 @@
-import React, { memo, createRef, useMemo, useCallback, useEffect } from 'react';
+import React, { memo, useRef, useMemo, useCallback, useEffect } from 'react';
 import { css, keyframes } from '@emotion/css';
 import cn from 'classnames';
 import type { ButtonBaseProps } from './types';
 
-const rippleAnimation = keyframes`
-to {
-  transform: scale(1.2);
-  opacity: 0;
-}
-`;
 const defaultButtonStyle = css({
   position: 'relative',
   overflow: 'hidden',
@@ -21,12 +15,18 @@ const disabledButtonStyle = css({
   cursor: 'default',
   pointerEvents: 'none',
 });
-const rippleContainer = css({
+const rippleContainerStyle = css({
   position: 'absolute',
   inset: 0,
   borderRadius: 'inherit',
   pointerEvents: 'none',
 });
+const rippleAnimation = keyframes`
+to {
+  transform: scale(1.2);
+  opacity: 0;
+}
+`;
 
 function ButtonBase(props: ButtonBaseProps): React.ReactElement {
   /* States */
@@ -36,11 +36,11 @@ function ButtonBase(props: ButtonBaseProps): React.ReactElement {
     rippleColor = 'rgba(0, 0, 0, .2)',
     className,
     disabled,
-    type,
+    type = 'button',
     ...rest
   } = props;
-  const buttonRef = createRef<HTMLButtonElement>();
-  const rippleContainerRef = createRef<HTMLSpanElement>();
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const rippleContainerRef = useRef<HTMLSpanElement | null>(null);
   const rippleStyle = useMemo(
     () =>
       css({
@@ -108,13 +108,13 @@ function ButtonBase(props: ButtonBaseProps): React.ReactElement {
         className
       )}
       disabled={disabled}
-      type={type ? type : 'button'}
-      {...rest}
+      type={type}
       ref={buttonRef}
+      {...rest}
     >
       {children ? children : 'button'}
       <span
-        className={cn(rippleContainer)}
+        className={cn(rippleContainerStyle)}
         role="presentation"
         ref={rippleContainerRef}
       />

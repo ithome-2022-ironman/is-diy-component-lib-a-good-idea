@@ -13,7 +13,9 @@ enum KEY {
   ESCAPE = 'Escape',
 }
 
-function DialogGroundBase(props: DialogBackdropBaseProps): React.ReactElement {
+function DialogBackdropBase(
+  props: DialogBackdropBaseProps
+): React.ReactElement {
   /* States */
   const {
     children,
@@ -21,11 +23,10 @@ function DialogGroundBase(props: DialogBackdropBaseProps): React.ReactElement {
     disableCloseByBackdropClick,
     disableCloseByKeyPress,
     overwriteEscapeKey,
+    className,
     ...rest
   } = props;
-  const dialogGroundBaseRef = createRef<HTMLDivElement>();
-  const classNamesFromProps = rest.className;
-  delete rest.className;
+  const DialogBackdropBaseRef = createRef<HTMLDivElement>();
 
   /* Functions */
   const closeDialogByClick = useCallback(
@@ -49,22 +50,18 @@ function DialogGroundBase(props: DialogBackdropBaseProps): React.ReactElement {
 
   /* Hooks */
   useEffect(() => {
-    const backdrop = dialogGroundBaseRef.current;
+    const backdrop = DialogBackdropBaseRef.current;
     document.addEventListener('keydown', closeDialogByKeydown);
     backdrop?.addEventListener('click', closeDialogByClick);
     return () => {
       document.removeEventListener('keydown', closeDialogByKeydown);
       backdrop?.removeEventListener('click', closeDialogByClick);
     };
-  }, [dialogGroundBaseRef, closeDialogByClick, closeDialogByKeydown]);
+  }, [DialogBackdropBaseRef, closeDialogByClick, closeDialogByKeydown]);
 
   /* Main */
   return (
-    <div
-      className={cn(classNamesFromProps)}
-      ref={dialogGroundBaseRef}
-      {...rest}
-    >
+    <div className={cn(className)} ref={DialogBackdropBaseRef} {...rest}>
       {children}
     </div>
   );
@@ -108,7 +105,7 @@ function DialogBase(props: DialogBaseProps): React.ReactElement {
   /* Main */
   return mounted ? (
     <Portal>
-      <DialogGroundBase
+      <DialogBackdropBase
         onClose={onClose}
         className={cn(
           classes.backdrop,
@@ -130,7 +127,7 @@ function DialogBase(props: DialogBaseProps): React.ReactElement {
         >
           {children}
         </div>
-      </DialogGroundBase>
+      </DialogBackdropBase>
     </Portal>
   ) : (
     <React.Fragment />

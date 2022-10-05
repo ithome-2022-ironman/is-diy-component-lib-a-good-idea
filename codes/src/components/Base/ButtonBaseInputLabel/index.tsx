@@ -99,91 +99,38 @@ function ButtonBase(props: ButtonBaseProps): React.ReactElement {
 
   /* Hooks */
   useEffect(() => {
-    const button = buttonRef.current;
-    button?.addEventListener('click', playRipple);
-    button?.addEventListener('animationend', removeRipple);
+    const clickTarget = (labelRef.current || buttonRef.current) as HTMLElement;
+    clickTarget?.addEventListener('click', playRipple);
+    clickTarget?.addEventListener('animationend', removeRipple);
     return () => {
-      button?.removeEventListener('click', playRipple);
-      button?.removeEventListener('animationend', removeRipple);
+      clickTarget?.removeEventListener('click', playRipple);
+      clickTarget?.removeEventListener('animationend', removeRipple);
     };
-  }, [buttonRef, playRipple, removeRipple]);
-  useEffect(() => {
-    const label = labelRef.current;
-    label?.addEventListener('click', playRipple);
-    label?.addEventListener('animationend', removeRipple);
-    return () => {
-      label?.removeEventListener('click', playRipple);
-      label?.removeEventListener('animationend', removeRipple);
-    };
-  }, [labelRef, playRipple, removeRipple]);
-
-  /* Views */
-  // TODO: 用 createElement() 根據 renderAs 做出 finalView
-  const finalView = useMemo(() => {
-    switch (renderAs) {
-      case 'button':
-        return createElement(
-          'button',
-          {
-            className: cn(
-              defaultButtonStyle,
-              disabled && disabledButtonStyle,
-              className
-            ),
-            disabled,
-            type,
-            ref: buttonRef,
-            ...rest,
-          },
-          <React.Fragment>
-            {children ? children : 'button'}
-            <span
-              className={cn(rippleContainerStyle)}
-              role="presentation"
-              ref={rippleContainerRef}
-            />
-          </React.Fragment>
-        );
-      case 'label':
-        return createElement(
-          'label',
-          {
-            className: cn(
-              defaultButtonStyle,
-              disabled && disabledButtonStyle,
-              className
-            ),
-            disabled,
-            type,
-            ref: labelRef,
-            ...rest,
-          },
-          <React.Fragment>
-            {children ? children : 'button'}
-            <span
-              className={cn(rippleContainerStyle)}
-              role="presentation"
-              ref={rippleContainerRef}
-            />
-          </React.Fragment>
-        );
-      default:
-        return <React.Fragment />;
-    }
-  }, [
-    renderAs,
-    disabled,
-    type,
-    className,
-    buttonRef,
-    labelRef,
-    rest,
-    children,
-    rippleContainerRef,
-  ]);
+  }, [labelRef, buttonRef, playRipple, removeRipple]);
 
   /* Main */
-  return finalView;
+  return createElement(
+    renderAs === 'button' ? 'button' : 'label',
+    {
+      className: cn(
+        defaultButtonStyle,
+        disabled && disabledButtonStyle,
+        className
+      ),
+      disabled,
+      type: renderAs === 'button' ? type : undefined,
+      ref: renderAs === 'button' ? buttonRef : labelRef,
+      ...rest,
+    },
+    <React.Fragment>
+      {children ? children : 'button'}
+      <span
+        className={cn(rippleContainerStyle)}
+        role="presentation"
+        ref={rippleContainerRef}
+      />
+    </React.Fragment>
+  );
 }
 
 export default memo(ButtonBase);
