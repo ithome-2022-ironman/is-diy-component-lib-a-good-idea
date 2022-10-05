@@ -2,7 +2,7 @@ import type { ToastProps } from '@Components/Common/Toast/types';
 
 export interface ToastsProps {
   toasts: ToastArray;
-  onClose?: (id: unknown) => void;
+  onClose?: (id: string) => void;
 }
 
 export type ToastArray = Array<ToastBase>;

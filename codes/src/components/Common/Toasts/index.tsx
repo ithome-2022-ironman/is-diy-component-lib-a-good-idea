@@ -17,10 +17,8 @@ function Toasts(props: ToastsProps): React.ReactElement {
     });
   }, []);
   const closeSingleSnack = useCallback(
-    (snackId: unknown): void => {
-      if (onClose) {
-        onClose(snackId);
-      }
+    (toastId: string): void => {
+      if (onClose) onClose(toastId);
     },
     [onClose]
   );
@@ -29,17 +27,17 @@ function Toasts(props: ToastsProps): React.ReactElement {
   return (
     <Portal>
       <React.Fragment>
-        {toasts.map((snack, index) => (
+        {toasts.map((toast, index) => (
           <Toast
-            key={snack.id}
-            show={snack.show}
-            onClose={() => closeSingleSnack(snack.id)}
-            classes={{ snack: calcHeight(toasts, index) }}
-            countDown={snack.countDown}
-            disableAutoClose={snack.disableAutoClose}
-            pauseOnHover={snack.pauseOnHover}
+            key={toast.id}
+            show={toast.show}
+            onClose={() => closeSingleSnack(toast.id)}
+            classes={{ toast: calcHeight(toasts, index) }}
+            countDown={toast.countDown}
+            disableAutoClose={toast.disableAutoClose}
+            pauseOnHover={toast.pauseOnHover}
           >
-            {snack.children}
+            {toast.children}
           </Toast>
         ))}
       </React.Fragment>

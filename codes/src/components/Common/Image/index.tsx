@@ -7,14 +7,13 @@ import type { ImageProps } from './types';
 const onErrorStyle = css({
   display: 'block',
   width: '200px',
-  height: '40px',
+  height: '200px',
   '&::after': {
-    content: '"image is unavailable"',
+    content: '"image unavailable"',
     width: '100%',
     height: '100%',
     position: 'absolute',
-    top: 0,
-    left: 0,
+    inset: 0,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -24,7 +23,11 @@ const onErrorStyle = css({
     fontSize: '12px',
   },
 });
-const captionStyle = css({ color: '#78909c' });
+const captionStyle = css({
+  textAlign: 'center',
+  fontSize: '12px',
+  color: '#78909c',
+});
 
 function Image(props: ImageProps): React.ReactElement {
   /* States */

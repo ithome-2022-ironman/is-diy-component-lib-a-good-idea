@@ -11,6 +11,12 @@ const tabsContainer = css({
 const hide = css({
   display: 'none',
 });
+const tabHighlight = css({
+  color: '#f69d3c',
+  backgroundImage: 'linear-gradient(to left, #3f87a6, #f69d3c)',
+  backgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+});
 
 function Tabs<T>(props: TabsProps<T>): React.ReactElement {
   /* States */
@@ -67,7 +73,7 @@ function Tabs<T>(props: TabsProps<T>): React.ReactElement {
           width: `${Math.round(100 / tabsCount)}%`,
           height: '100%',
           position: 'absolute',
-          backgroundColor: '#4e342e',
+          background: 'linear-gradient(to left, #3f87a6, #f69d3c)',
           transform: getTranslateX(currentTab.index),
           transition: 'transform .3s ease',
         },
@@ -78,11 +84,16 @@ function Tabs<T>(props: TabsProps<T>): React.ReactElement {
   /* Main */
   return (
     <div className={cn(classes.wrapper)} {...rest}>
+      {/* tabs */}
       <div className={cn(tabsContainer)} ref={tabsRef}>
         {dataArray.map((d, index) => (
           <Button
             key={index}
-            className={cn(tabBase, classes.tab)}
+            className={cn(
+              tabBase,
+              currentTab.id === d.id && tabHighlight,
+              classes.tab
+            )}
             onClick={setNewCurrentTab(d.id, index)}
           >
             {d.tab}
@@ -90,6 +101,7 @@ function Tabs<T>(props: TabsProps<T>): React.ReactElement {
         ))}
       </div>
       <div className={cn(currentTabStyle, classes.currentTab)} />
+      {/* contents */}
       <div>
         {dataArray.map((d, index) => (
           <div

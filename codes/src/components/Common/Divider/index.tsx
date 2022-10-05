@@ -10,7 +10,7 @@ function Divider(props: DividerProps): React.ReactElement {
     color,
     gradientColor = false,
     thick = 1,
-    style = 'solid',
+    dividerStyle = 'solid',
     labelStyle,
     labelAlign = 'center',
     className,
@@ -31,7 +31,7 @@ function Divider(props: DividerProps): React.ReactElement {
       return css({
         width: '100%',
         borderBottomWidth: `${thick}px`,
-        borderBottomStyle: style,
+        borderBottomStyle: dividerStyle,
         borderBottomColor: color && !gradientColor ? color : undefined,
         borderImage:
           color && gradientColor
@@ -46,7 +46,7 @@ function Divider(props: DividerProps): React.ReactElement {
       return css({
         height: '100%',
         borderLeftWidth: `${thick}px`,
-        borderLeftStyle: style,
+        borderLeftStyle: dividerStyle,
         borderLeftColor: color && !gradientColor ? color : undefined,
         borderImage:
           color && gradientColor
@@ -58,7 +58,7 @@ function Divider(props: DividerProps): React.ReactElement {
       });
     }
     return '';
-  }, [orientation, thick, style, color, gradientColor]);
+  }, [orientation, thick, dividerStyle, color, gradientColor]);
 
   /* Main */
   return (

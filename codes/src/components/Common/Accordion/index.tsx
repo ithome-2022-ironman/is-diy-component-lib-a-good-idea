@@ -1,6 +1,14 @@
 import React, { memo, useState, useCallback, useEffect, useMemo } from 'react';
+import { css } from '@emotion/css';
 import cn from 'classnames';
 import type { AccordionProps } from './types';
+
+const defaultWrapperStyle = css({ width: '100%', border: '1px solid #333' });
+const defaultBodyStyle = css({
+  padding: '24px',
+  borderTop: '1px solid #333',
+  backgroundColor: '#fffffe',
+});
 
 function Accordion(props: AccordionProps): React.ReactElement {
   /* States */
@@ -35,10 +43,10 @@ function Accordion(props: AccordionProps): React.ReactElement {
   /* Hooks */
   useEffect(() => {
     React.Children.forEach(children, (child, index) => {
-      const c = child as JSX.Element;
+      const childElement = child as JSX.Element;
       if (index === 0) {
         setTitleElement(
-          React.cloneElement(c, {
+          React.cloneElement(childElement, {
             open: openToUse,
             onClick: hasOpenFromProps ? undefined : toggleAccordion,
             accordionTitleClass: classes.title,
@@ -47,9 +55,9 @@ function Accordion(props: AccordionProps): React.ReactElement {
       }
       if (index === 1) {
         setBodyElement(
-          React.cloneElement(c, {
+          React.cloneElement(childElement, {
             open: openToUse,
-            accordionBodyClass: classes.body,
+            accordionBodyClass: cn(openToUse && defaultBodyStyle, classes.body),
           })
         );
       }
@@ -65,7 +73,7 @@ function Accordion(props: AccordionProps): React.ReactElement {
 
   /* Main */
   return (
-    <div className={cn(classes.wrapper)} {...rest}>
+    <div className={cn(defaultWrapperStyle, classes.wrapper)} {...rest}>
       {titleElement}
       {bodyElement}
     </div>

@@ -6,7 +6,7 @@ export interface DividerProps extends React.HTMLAttributes<HTMLHRElement> {
   color?: Property.Background;
   gradientColor?: boolean;
   thick?: number;
-  style?: Property.BorderBottomStyle;
+  dividerStyle?: Property.BorderBottomStyle;
   labelStyle?: string;
   labelAlign?:
     | Property.TextAlign

@@ -1,14 +1,16 @@
 import React, { memo, useMemo } from 'react';
 import { css } from '@emotion/css';
 import cn from 'classnames';
-import ButtonBase from '@Components/Base/ButtonBase';
+import ButtonBase from '@Components/Base/ButtonBaseInputLabel';
 import type { ButtonProps } from './types';
 
-function ButtonContained(props: ButtonProps): React.ReactElement {
+function Button(props: ButtonProps): React.ReactElement {
   /* States */
   const {
     children,
     variant = 'contained',
+    startIcon,
+    endIcon,
     className,
     disabled,
     ...rest
@@ -18,7 +20,7 @@ function ButtonContained(props: ButtonProps): React.ReactElement {
       css({
         minWidth: '40px',
         minHeight: '28px',
-        gap: '4px',
+        gap: '8px',
         padding: '8px 16px',
         borderRadius: '4px',
         fontSize: '14px',
@@ -72,9 +74,11 @@ function ButtonContained(props: ButtonProps): React.ReactElement {
       disabled={disabled}
       {...rest}
     >
+      {startIcon}
       {children}
+      {endIcon}
     </ButtonBase>
   );
 }
 
-export default memo(ButtonContained);
+export default memo(Button);
