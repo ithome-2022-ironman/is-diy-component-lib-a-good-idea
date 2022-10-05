@@ -12,13 +12,20 @@
 
 因此 `Image` 元件就這麼誕生了 (ﾟ ∀ ﾟ)
 
+## 成品
+
+![https://ithelp.ithome.com.tw/upload/images/20220920/20142759tF8yqIVTao.png](https://ithelp.ithome.com.tw/upload/images/20220920/20142759tF8yqIVTao.png)
+
+[展示](https://tzynwang.github.io/ithome-2022-demo/#/Image)
+[原始碼](https://gist.github.com/tzynwang/1f561a290868e79cad29b6c2ea46ac62)
+
 ## 開發思路
 
 ### 外觀部分
 
 把 `width` 與 `height` 等常用的 CSS 樣式移動到 `props` 方便設定。
 
-也加入 `props.imageOnly` 允許使用者透過 `props` 直接捨棄原生 `figure` 與 `figcaption` 元件。
+也加入 `props.imageOnly` 允許使用者透過 `props` 來指定移除 `figure` 與 `figcaption` 元件。
 
 ### 處理 src 失效情境
 
@@ -27,15 +34,13 @@
 
 ```tsx
 // codes/src/components/Base/ImageBase/index.tsx
-/* States */
+
 const [hasError, setHasError] = useState<boolean>(false);
 
-/* Functions */
 const handleImgLoadError = useCallback((): void => {
   setHasError(true);
 }, []);
 
-/* Main */
 <img
   className={cn(imgStyle, hasError && classes.onError, classes.img)}
   onError={handleImgLoadError}
@@ -71,7 +76,7 @@ const onErrorStyle = css({
 
 ### 切分為 ImageBase 與 Image 的理由
 
-主要是考慮到 avatar 或 icon 此類小圖片的 width/height 尺寸通常與一般圖片不同，將 onError 樣式移動到 Image 來設定可以保留較多彈性。通通寫死在 ImageBase 裡面會讓大小尺寸相差很多的圖片元件共享同一套 onError 樣式，我認為這樣反而比較不理想，故截稿前還是決定採用 ImageBase 與 Image 分拆的設計方式。
+主要是考慮到 avatar 或 icon 此類小圖片的尺寸通常與一般圖片不同，將 `onError` 樣式移動到 `Image` 來設定可以保留較多彈性。通通寫死在 `ImageBase` 裡面會讓大小尺寸相差很多的圖片元件共享同一套 `onError` 樣式，我認為這樣反而比較不理想，故截稿前還是決定採用 `ImageBase` 與 `Image` 分拆的設計方式。
 
 ## 修改指南
 
@@ -112,4 +117,4 @@ const onErrorStyle = css({
 
 ## 自評
 
-一天又平安的過去了，感謝 Image 元件解決連結失效時的破圖問題。
+一天又平安的過去了，感謝 `Image` 元件解決連結失效時的破圖問題。

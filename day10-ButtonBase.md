@@ -2,31 +2,57 @@
 
 ![波紋](https://wiki.komica.org/images/thumb/2/22/Img12657.jpg/300px-Img12657.jpg)
 
-來重現 MUI 的按鈕（包含漣漪效果）吧。
+來重現 [MUI 的按鈕](https://mui.com/material-ui/react-button/#main-content)（包含~~波紋~~漣漪效果）吧。
 
-不過因為實作動畫效果的原始碼比預期的長，故實心、外框與純文字按鈕的效果放到明天來示範。
+不過因為實作動畫效果的原始碼比預期的長，故實心、外框與純文字按鈕的 CSS 實作內容放到明天來示範。
+
+## 成品
+
+[展示](https://tzynwang.github.io/ithome-2022-demo/#/ButtonBase)
+[原始碼](https://gist.github.com/tzynwang/3e872f6aa369c837f86012dda38b8eb9)
 
 ## 開發思路
 
 ### 基本樣式
 
+```ts
+const defaultButtonStyle = css({
+  position: 'relative',
+  overflow: 'hidden',
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  cursor: 'pointer',
+});
+```
+
 透過 `position: relative` 與 `overflow: hidden` 來把漣漪動畫限制在「按鈕」的範圍內。
-
 置中透過 `display: inline-flex` 來處理。
-
 而在按鈕呈現 `disable` 狀態時，透過 `pointer-events: none` 來讓按鈕忽略點擊事件。
 
 ### 漣漪效果
 
+點擊按鈕後，將一個圓形且逐漸擴大並變為透明的元件掛載到按鈕上，這個元件就是漣漪動畫效果的本體。
+相關程式碼與解說如下：
+
 ```tsx
+// 動畫效果：設定 scale 讓漣漪放大，並同時透明度變為 0
 const rippleAnimation = keyframes`
 to {
   transform: scale(1.2);
   opacity: 0;
 }
 `;
-
-/* States */
+// 設定按鈕為 overflow: hidden 把漣漪的範圍限制在按鈕之內
+const defaultButtonStyle = css({
+  position: 'relative',
+  overflow: 'hidden',
+  display: 'inline-flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  cursor: 'pointer',
+});
+// 預設漣漪樣式，允許使用者透過 props.rippleColor 來直接控制漣漪顏色
 const rippleStyle = useMemo(
   () =>
     css({
@@ -39,7 +65,6 @@ const rippleStyle = useMemo(
   [rippleColor]
 );
 
-/* Functions */
 const playRipple = useCallback(
   (e: MouseEvent): void => {
     // props.disableRipple 時，不執行任何關於漣漪動畫的計算
@@ -60,7 +85,7 @@ const playRipple = useCallback(
       rippleEffect.style.left = `${e.clientX - (target.offsetLeft + radius)}px`;
       rippleEffect.style.top = `${e.clientY - (target.offsetTop + radius)}px`;
 
-      // 設定漣漪使用的樣式 rippleStyle
+      // 加上漣漪的動畫樣式 rippleStyle
       rippleEffect.classList.add(rippleStyle);
 
       // 把漣漪 span 元件掛載到畫面上，而根據 rippleStyle 的設定，漣漪會在 0.7 秒後變為完全透明
@@ -85,7 +110,6 @@ const removeRipple = useCallback((): void => {
   }
 }, [rippleContainerRef, rippleStyle]);
 
-/* Hooks */
 useEffect(() => {
   const button = buttonRef.current;
   button?.addEventListener('click', playRipple);
@@ -106,7 +130,6 @@ useEffect(() => {
 ## 自評
 
 漣漪效果沒有想像中容易，動手寫了才知道複雜。沒事不需要自幹，吃力不討好。
-
 但不做動畫效果的話倒是蠻簡單的 (ﾟ ∀ ﾟ)
 
 ## 參考資料

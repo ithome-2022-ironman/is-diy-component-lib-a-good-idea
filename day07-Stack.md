@@ -1,6 +1,12 @@
 # day07: Stack
 
-對付大量等距間隔元件的排版專武，簡單好寫，值得擁有。
+對付大量等距間隔元件的排版專武，簡單好寫，值得擁有。搭配~~昨天做好的醬汁~~ `SpaceWrapper` 更是讓滋味變得妙不可言。
+
+## 成品
+
+![https://ithelp.ithome.com.tw/upload/images/20220918/20142759yLOtTxOvwo.png](https://ithelp.ithome.com.tw/upload/images/20220918/20142759yLOtTxOvwo.png)
+
+[原始碼（可試玩）](https://codesandbox.io/s/2022-day07-stack-r5gxr3?file=/src/App.tsx)
 
 ## 開發思路
 

@@ -2,18 +2,24 @@
 
 想讓 hooks 能夠對應 window 以外的捲動對象，今天來做點加工處理。
 
+## 成品
+
+- [useElementIsScrollDown](https://tzynwang.github.io/ithome-2022-demo/#/useElementIsScrollDown)
+- [useElementScrollPercentage](https://tzynwang.github.io/ithome-2022-demo/#/useElementScrollPercentage)
+- [原始碼](https://gist.github.com/tzynwang/cc5bd3c9969dc4420fee88d11db987e8)
+
 ## 開發思路
 
-將原本寫死的監聽器貼附物件改為透過 hook 參數傳進來即可。
+將原本寫死的監聽器對象改為透過 hook 參數傳進來即可。
 
-另外在截稿前查詢到元件的 `ref` props 在傳入 callback function 時，該 function 的參數會是元件實例，所以也可以寫成：
+另外在截稿前查詢到元件的 `ref` props 在傳入 callback function 時，該 function 的參數會是元件實例或 HTML DOM 物件（The function receives the React component instance or HTML DOM element as its argument, which can be stored and accessed elsewhere.），所以也可以寫成：
 
-```ts
+```tsx
 import { useState, useEffect, useCallback } from 'react';
 import { debounce } from 'lodash';
 
 export default function useElementScrollPercentage<T extends Element>(
-  element: T | null,
+  element: T | null, // 直接傳入監聽器對象
   delay: number = 100
 ): number {
   /* States */
@@ -65,6 +71,7 @@ function useElementIsScrollPercentageDemo(): React.ReactElement {
               overflow: 'auto',
             })
           )}
+          // 透過 ref callback 保存 div
           ref={(node) => setDiv(node)}
         >
           <div className={cn(css({ height: '200vh' }))} />
@@ -80,10 +87,10 @@ function useElementIsScrollPercentageDemo(): React.ReactElement {
 export default memo(useElementIsScrollPercentageDemo);
 ```
 
-## 修改指南
-
-`useElementScrollPercentage` 有使用 `Math.round` 來處理百分比計算結果，如果不希望在 hook 中處理四捨五入的話可以移除掉。
-
 ## 自評
 
-不難，真的可以自己寫。
+實作上不難，但截稿前沒有實作出單一 hook 兼顧 window 與 HTML DOM 物件的捲動監聽有點可惜 (´・ω・`)
+
+## 參考資料
+
+- [React Official: Refs and the DOM](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs)
