@@ -36,6 +36,7 @@ const labelStar = css({
     top: '50%',
     transform: 'translate(-50%, -50%)',
     padding: '0px 4px',
+    marginLeft: '10%',
     backgroundColor: '#f9f4ef',
   },
 });
@@ -95,16 +96,16 @@ function DividerDemo(): React.ReactElement {
         <Stack className={cn(fullWidth)}>
           <Typography className={cn(monoFont)}>{`<Divider
           thick={2}
-          style="dashed"
+          dividerStyle="dashed"
           color="#333"
-          labelAlign="center"
+          labelAlign="left"
           labelStyle={labelStar}
         />`}</Typography>
           <Divider
             thick={2}
-            style="dashed"
+            dividerStyle="dashed"
             color="#333"
-            labelAlign="center"
+            labelAlign="left"
             labelStyle={labelStar}
           />
         </Stack>

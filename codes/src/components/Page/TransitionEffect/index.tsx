@@ -20,6 +20,7 @@ function TransitionEffectDemo(): React.ReactElement {
   /* States */
   const [fade, setFade] = useState<boolean>(false);
   const [scale, setScale] = useState<boolean>(false);
+  const [collapse, setCollapse] = useState<boolean>(false);
 
   /* Functions */
   const fadeBox = useCallback((): void => {
@@ -27,6 +28,9 @@ function TransitionEffectDemo(): React.ReactElement {
   }, []);
   const scaleBox = useCallback((): void => {
     setScale((prev) => !prev);
+  }, []);
+  const collapseBox = useCallback((): void => {
+    setCollapse((prev) => !prev);
   }, []);
 
   /* Main */
@@ -47,6 +51,14 @@ function TransitionEffectDemo(): React.ReactElement {
         <SpaceWrapper padding={24}>
           <TransitionEffect mount={scale} effect="scale" portal={document.body}>
             <div className={cn(cardStyle, fixedCardStyle)} />
+          </TransitionEffect>
+        </SpaceWrapper>
+        <SpaceWrapper>
+          <Button onClick={collapseBox}>collapse</Button>
+        </SpaceWrapper>
+        <SpaceWrapper padding={24}>
+          <TransitionEffect mount={collapse} effect="collapse">
+            <div className={cn(cardStyle)} />
           </TransitionEffect>
         </SpaceWrapper>
       </Stack>

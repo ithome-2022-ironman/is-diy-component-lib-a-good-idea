@@ -1,6 +1,7 @@
 import React, { memo, useState } from 'react';
 import Button from '@Components/Common/Button';
 import Dialog from '@Components/Common/Dialog';
+import SpaceWrapper from '@Components/Layout/SpaceWrapper';
 
 function DialogDemo(): React.ReactElement {
   /* States */
@@ -8,12 +9,12 @@ function DialogDemo(): React.ReactElement {
 
   /* Main */
   return (
-    <React.Fragment>
+    <SpaceWrapper padding={24}>
       <Button onClick={() => setOpen(true)}>open dialog</Button>
       <Dialog open={open} onClose={() => setOpen(false)}>
         <div>dialog content</div>
       </Dialog>
-    </React.Fragment>
+    </SpaceWrapper>
   );
 }
 
