@@ -4,6 +4,16 @@ import cn from 'classnames';
 import Avatar from '@Components/Common/Avatar';
 import type { AvatarGroupProps } from './types';
 
+const baseStyle = css({
+  display: 'flex',
+  flexDirection: 'row-reverse',
+  justifyContent: 'flex-end',
+  paddingLeft: 'calc(12px - 2px - 2px)',
+  '& > div': {
+    marginLeft: '-12px',
+  },
+});
+
 function AvatarGroup(props: AvatarGroupProps): React.ReactElement {
   /* States */
   const { children, max, className, ...rest } = props;
@@ -26,21 +36,7 @@ function AvatarGroup(props: AvatarGroupProps): React.ReactElement {
 
   /* Main */
   return (
-    <div
-      className={cn(
-        css({
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          justifyContent: 'flex-end',
-          paddingLeft: 'calc(12px - 2px - 2px)',
-          '& > div': {
-            marginLeft: '-12px',
-          },
-        }),
-        className
-      )}
-      {...rest}
-    >
+    <div className={cn(baseStyle, className)} {...rest}>
       {childrenArr.map((child, index) => (
         <React.Fragment key={index}>{child}</React.Fragment>
       ))}

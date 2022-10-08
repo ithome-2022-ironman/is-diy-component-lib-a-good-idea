@@ -25,7 +25,7 @@ function AvatarDemo(): React.ReactElement {
         <AvatarGroup>
           <Avatar src={foxSrc} />
           <Avatar>C</Avatar>
-          <Avatar src="..." />
+          <Avatar />
           <Avatar>
             <PhotoCameraIcon fill="#fff" />
           </Avatar>

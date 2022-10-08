@@ -75,16 +75,25 @@ function Avatar(props: AvatarProps): React.ReactElement {
         </div>
       );
     }
+    if (src) {
+      return (
+        <ImageBase
+          src={src}
+          classes={{
+            figure: cn(withBorder && figureStyle, imgStyle),
+            img: imgStyle,
+            onError: onErrorStyle,
+          }}
+          onError={fallBackToText}
+        />
+      );
+    }
     return (
-      <ImageBase
-        src={src}
-        classes={{
-          figure: cn(withBorder && figureStyle, imgStyle),
-          img: imgStyle,
-          onError: onErrorStyle,
-        }}
-        onError={fallBackToText}
-      />
+      <div
+        className={cn(imgStyle, withBorder && figureStyle, withChildrenStyle)}
+      >
+        <PersonIcon fill="#fff" />
+      </div>
     );
   }, [children, src, onError, withBorder, fallBackToText]);
 
